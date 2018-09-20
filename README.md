@@ -1,4 +1,4 @@
-## grez72/docker-jupyter-notebooks-gpu
+## ColinConwell/Notebooks
 
 *...This is a work in progress!*
 
