@@ -12,7 +12,7 @@ FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
 
 MAINTAINER George Alvarez <gre72@gmail.com, alvarez@wjh.harvard.edu>
 
-ARG PYTORCH_VERSION=0.4.1xs
+ARG PYTORCH_VERSION=0.4.0
 ARG CUDA_VERSION=cuda90
 
 USER root
@@ -23,7 +23,7 @@ WORKDIR $HOME
 # ==============================================================
 
 RUN pip install --upgrade pip \
-  && pip install numpy --upgrade \
+  && pip install --ignore-installed numpy --upgrade \
   && conda update conda \
   && conda install -y mkl -c intel \
   && conda install pytorch torchvision cuda90 -c pytorch
@@ -31,7 +31,7 @@ RUN pip install --upgrade pip \
 # RUN conda update -y conda pytorch torchvision
 RUN /bin/bash -c "source activate python2 \
   && pip install --upgrade pip \
-  && pip install numpy --upgrade \
+  && pip install --ignore-installed numpy --upgrade \
   && conda install -y mkl -c intel \
   && conda install pytorch torchvision cuda90 -c pytorch"
 
