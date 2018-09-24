@@ -20,17 +20,14 @@ WORKDIR $HOME
 # ==============================================================
 
 RUN pip install --upgrade pip \
-  && pip install --ignore-installed numpy --upgrade \
   && conda update conda \
   && conda install -y mkl -c intel \
   && conda install pytorch torchvision cuda90 -c pytorch
 
-# RUN conda update -y conda pytorch torchvision
-RUN /bin/bash -c "source activate python2 \
-  && pip install --upgrade pip \
-  && pip install --ignore-installed numpy --upgrade \
-  && conda install -y mkl -c intel \
-  && conda install pytorch torchvision cuda90 -c pytorch"
+#RUN /bin/bash -c "source activate python2 \
+#  && pip install --upgrade pip \
+#  && conda install -y mkl -c intel \
+#  && conda install pytorch torchvision cuda90 -c pytorch"
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
