@@ -16,6 +16,7 @@ ARG DEFAULT_PYTHON_VERSION=3.6
 ARG BAZEL_VERSION=0.10.0
 ARG CUDA_VERSION=9.1
 ARG CUDNN_VERSION=7
+ARG KERAS_VERSION=2.2.1
 
 USER root
 WORKDIR $HOME
@@ -208,7 +209,7 @@ RUN /bin/bash -c "source activate python2 && pip install --ignore-installed /tmp
 #  install tflearn
 # ==============================================================
 
-# Kearas is now build into tensorflow
+# Keras is now build into tensorflow
 # install keras
 # RUN pip install keras==${KERAS_VERSION}
 # RUN pip install keras==${KERAS_VERSION}
