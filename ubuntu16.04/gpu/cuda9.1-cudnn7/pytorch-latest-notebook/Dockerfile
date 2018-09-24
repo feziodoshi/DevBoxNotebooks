@@ -3,17 +3,14 @@
 # Pytorch 0.4.0 jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
 #
 # ssh into apophenia (or whatever you machine is named)
-# sudo nvidia-docker build -t cocoflow/pytorch:ubuntu16.04-cuda9.1-cudnn7 https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda9.1-cudnn7/pytorch-v0.4-notebook
+# sudo nvidia-docker build -t cocoflow/pytorch:ubuntu16.04-cuda9.1-cudnn7 https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda9.1-cudnn7/pytorch-latest-notebook
 #
 # test it
 # nvidia-docker run -it --rm cocoflow/pytorch:ubuntu16.04-cuda9.1-cudnn7 nvidia-smi
 
 FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
 
-MAINTAINER George Alvarez <gre72@gmail.com, alvarez@wjh.harvard.edu>
-
-ARG PYTORCH_VERSION=0.4.0
-ARG CUDA_VERSION=cuda90
+MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
 USER root
 WORKDIR $HOME

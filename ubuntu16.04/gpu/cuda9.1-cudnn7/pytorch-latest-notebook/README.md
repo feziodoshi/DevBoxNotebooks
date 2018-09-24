@@ -1,4 +1,6 @@
-## **grez72/deep-notebooks**:ubuntu14.04-gpu-cuda8-cudnn5-base-notebook
+## **grez72/deep-notebooks**:ubuntu16.04-gpu-cuda9.1-cudnn7-torch-notebook
+
+Dockerfile for building for building the deep-learning framework [PyTorch](https://pytorch.org/) for use with jupyter notebook. This docker image can be used with Jupyterhub + DockerSpawner to spawn single-user notebooks.
 
 ## Base Notebook
 * Ubuntu 16.04
