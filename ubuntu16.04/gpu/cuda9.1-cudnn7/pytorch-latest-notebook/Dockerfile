@@ -24,11 +24,6 @@ RUN pip install --upgrade pip \
   && conda install -y mkl -c intel \
   && conda install pytorch torchvision cuda90 -c pytorch
 
-#RUN /bin/bash -c "source activate python2 \
-#  && pip install --upgrade pip \
-#  && conda install -y mkl -c intel \
-#  && conda install pytorch torchvision cuda90 -c pytorch"
-
 # ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
