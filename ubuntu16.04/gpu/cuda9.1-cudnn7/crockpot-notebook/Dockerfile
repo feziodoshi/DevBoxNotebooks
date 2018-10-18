@@ -17,10 +17,7 @@ WORKDIR $HOME
 #  INSTALL PYTORCH
 # ==============================================================
 
-RUN pip install --upgrade pip \
-  && conda update conda \
-  && conda install -y mkl -c intel \
-  && conda install pytorch torchvision cuda90 -c pytorch
+RUN conda install pytorch torchvision cuda90 -c pytorch
 
 # ==============================================================
 #  INSTALL KERAS
