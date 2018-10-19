@@ -66,7 +66,7 @@ RUN ls -la /home/jovyan/work/fastai/courses/dl1/data/
 RUN chmod -R a+w /home/jovyan/work/fastai
 
 ENV PATH /opt/conda/bin:$PATH
-WORKDIR /home/jovyan/work
+WORKDIR /home/jovyan/work/fastai
 
 ENV PATH /opt/conda/envs/fastai/bin:$PATH
 
