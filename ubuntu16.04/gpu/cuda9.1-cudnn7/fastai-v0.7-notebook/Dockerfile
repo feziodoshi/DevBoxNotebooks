@@ -41,7 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN conda update conda
 
-WORKDIR /home/jovyan/work
+WORKDIR /home/jovyan/work/fastai
 
 RUN git clone https://github.com/fastai/fastai.git .
 RUN ls && /opt/conda/bin/conda env create
@@ -60,10 +60,10 @@ RUN curl http://files.fast.ai/data/dogscats.zip --output dogscats.zip
 RUN unzip -d . dogscats.zip
 RUN rm dogscats.zip
 
-RUN ln -s /data/ /home/jovyan/work/courses/dl1/
+RUN ln -s /data/ /home/jovyan/work/fastai/courses/dl1/
 RUN ls -la /home/jovyan/work/fastai/courses/dl1/data/
 
-RUN chmod -R a+w /home/jovyan/work
+RUN chmod -R a+w /home/jovyan/work/fastai
 
 ENV PATH /opt/conda/bin:$PATH
 WORKDIR /home/jovyan/work
