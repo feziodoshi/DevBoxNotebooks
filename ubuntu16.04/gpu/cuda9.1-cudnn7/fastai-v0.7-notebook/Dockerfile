@@ -60,7 +60,7 @@ RUN curl http://files.fast.ai/data/dogscats.zip --output dogscats.zip
 RUN unzip -d . dogscats.zip
 RUN rm dogscats.zip
 
-RUN ln -s /data/ /home/jovyan/work/fastai/notebooks/courses/dl1/
+RUN ln -s /home/jovyan/work/fastai/data/ /home/jovyan/work/fastai/notebooks/courses/dl1/
 RUN ls -la /home/jovyan/work/fastai/notebooks/courses/dl1/data/
 
 RUN chmod -R a+w /home/jovyan/work/fastai
