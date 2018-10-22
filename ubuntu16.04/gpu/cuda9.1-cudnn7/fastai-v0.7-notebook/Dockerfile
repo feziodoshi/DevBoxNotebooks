@@ -19,56 +19,14 @@ WORKDIR $HOME
 #  INSTALL FASTAI
 # ==============================================================
 
-LABEL com.nvidia.volumes.needed="nvidia_driver"
+WORKDIR /home/$NB_USER/work/
 
-RUN echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list
+RUN git clone https://github.com/fastai/fastai
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-         build-essential \
-         cmake \
-         git \
-         curl \
-         vim \
-         ca-certificates \
-         libnccl2=2.2.13-1+cuda9.0 \
-         libnccl-dev=2.2.13-1+cuda9.0 \
-         python-qt4 \
-         libjpeg-dev \
-	 zip \
-	 unzip \
-         libpng-dev &&\
-     rm -rf /var/lib/apt/lists/*
+WORKDIR /home/$NB_USER/work/fastai
 
-RUN conda update conda
+RUN pip install -e .
 
-WORKDIR /home/jovyan/work/fastai/notebooks
-
-RUN git clone https://github.com/fastai/fastai.git .
-RUN ls && /opt/conda/bin/conda env create
-RUN /opt/conda/bin/conda clean -ya
-
-ENV PATH /opt/conda/envs/fastai/bin:$PATH
-ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
-ENV USER fastai
-
-CMD source activate fastai
-CMD source ~/.bashrc
-
-WORKDIR /home/jovyan/work/fastai/data
-
-RUN curl http://files.fast.ai/data/dogscats.zip --output dogscats.zip
-RUN unzip -d . dogscats.zip
-RUN rm dogscats.zip
-
-RUN ln -s /home/jovyan/work/fastai/data/ /home/jovyan/work/fastai/notebooks/courses/dl1/
-RUN ls -la /home/jovyan/work/fastai/notebooks/courses/dl1/data/
-
-RUN chmod -R a+w /home/jovyan/work/fastai
-
-ENV PATH /opt/conda/bin:$PATH
-WORKDIR /home/jovyan/work/fastai/notebooks
-
-ENV PATH /opt/conda/envs/fastai/bin:$PATH
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
