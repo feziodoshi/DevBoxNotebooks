@@ -19,11 +19,9 @@ WORKDIR $HOME
 #  INSTALL FASTAI
 # ==============================================================
 
-WORKDIR /home/$NB_USER/work/
-
 RUN git clone https://github.com/fastai/fastai
 
-WORKDIR /home/$NB_USER/work/fastai
+WORKDIR /fastai
 
 RUN pip install -e .
 
