@@ -16,7 +16,7 @@ WORKDIR $HOME
 #  INSTALL FASTAI
 # ==============================================================
 
-RUN pip install --upgrade pip \
+RUN pip install pip -U \
   && conda update conda
 RUN pip install fastai==0.7.0
 RUN pip install torchtext==0.2.3
