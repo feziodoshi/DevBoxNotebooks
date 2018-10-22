@@ -19,12 +19,8 @@ WORKDIR $HOME
 #  INSTALL FASTAI
 # ==============================================================
 
-RUN git clone https://github.com/fastai/fastai
-
-WORKDIR /fastai
-
-RUN pip install -e .
-
+RUN pip install fastai==0.7.0
+RUN pip install torchtext==0.2.3
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
