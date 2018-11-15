@@ -48,6 +48,7 @@ RUN apt-get install -y python-pyglet python3-opengl zlib1g-dev libjpeg-dev patch
 Run pip install cmake
 RUN pip install --upgrade gym \
   && pip install 'gym[atari]'
+  && pip install 'gym[box2d]'
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
