@@ -42,7 +42,7 @@ RUN pip install --upgrade pyro-ppl
 #  INSTALL OPENAI-GYM
 # ==============================================================
 
-RUN apt-get install -y python-pyglet python3-opengl zlib1g-dev libjpeg-dev patchelf \
+RUN apt-get update -y python-pyglet python3-opengl zlib1g-dev libjpeg-dev patchelf \
   cmake swig libboost-all-dev libsdl2-dev libosmesa6-dev xvfb ffmpeg
 RUN pip install --upgrade gym \
   && pip install 'gym[all]'
