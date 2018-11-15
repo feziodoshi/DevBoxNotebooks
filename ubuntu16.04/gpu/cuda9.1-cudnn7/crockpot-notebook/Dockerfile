@@ -42,10 +42,7 @@ RUN pip install --upgrade pyro-ppl
 #  INSTALL OPENAI-GYM
 # ==============================================================
 
-#RUN apt-get -y update
-#RUN apt-get install -y python-pyglet python3-opengl zlib1g-dev libjpeg-dev patchelf \
-#  cmake swig libboost-all-dev libsdl2-dev libosmesa6-dev xvfb ffmpeg
-Run pip install cmake
+RUN pip install cmake
 RUN pip install --upgrade gym \
   && pip install 'gym[atari]' \
   && pip install 'gym[box2d]'
