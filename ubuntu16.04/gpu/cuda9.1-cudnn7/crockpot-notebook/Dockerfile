@@ -46,7 +46,8 @@ RUN apt-get -y update
 RUN apt-get install -y python-pyglet python3-opengl zlib1g-dev libjpeg-dev patchelf \
   cmake swig libboost-all-dev libsdl2-dev libosmesa6-dev xvfb ffmpeg
 RUN pip install --upgrade gym \
-RUN pip install cmake 'gym[atari]'
+RUN pip install cmake
+RUN pip install 'gym[atari]'
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
