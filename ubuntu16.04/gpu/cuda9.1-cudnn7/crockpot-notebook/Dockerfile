@@ -39,8 +39,15 @@ RUN pip install --upgrade keras
 RUN pip install --upgrade pyro-ppl
 
 # ==============================================================
+#  INSTALL OPENAI-GYM
+# ==============================================================
+
+RUN pip install --upgrade gym
+
+# ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
+
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
