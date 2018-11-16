@@ -51,13 +51,6 @@ RUN pip install --upgrade gym \
   && pip install 'gym[box2d]'
 
 # ==============================================================
-#  INSTALL FASTAI
-# ==============================================================
-
-RUN pip install fastai==0.7.0
-RUN pip install torchtext==0.2.3
-
-# ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
 
