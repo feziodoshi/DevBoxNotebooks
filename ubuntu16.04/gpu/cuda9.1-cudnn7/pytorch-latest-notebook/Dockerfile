@@ -22,7 +22,7 @@ WORKDIR $HOME
 RUN pip install --upgrade pip \
   && conda update conda \
   && conda install -y mkl -c intel \
-  && conda install pytorch torchvision cuda90 -c pytorch
+  && conda install pytorch torchvision cuda91 -c pytorch
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
