@@ -7,7 +7,7 @@
 # > nvidia-docker run -it --rm cocoflow/crockpot:ubuntu16.04-cuda10.0-cudnn7 nvidia-smi
 
 #FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
-FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda10.0-cudnn7-minimal-notebook
+FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 

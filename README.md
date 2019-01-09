@@ -27,14 +27,10 @@ https://developer.nvidia.com/deep-learning-frameworks
 * [Caffe](http://caffe.berkeleyvision.org/)
 
 [ ] - [Caffe2](https://caffe2.ai/)
-
-[ ] - [Theano](http://deeplearning.net/software/theano/) which can be used with or without [Keras](http://keras.io/) or [Lasagne](http://lasagne.readthedocs.io/en/latest/)
-
 [ ] - [Chainer](https://chainer.org/)
-
 [ ] - [MXNET](http://mxnet.io/)
-
 [ ] - [Digits](https://developer.nvidia.com/digits)
+[ ] - [Theano](http://deeplearning.net/software/theano/) which can be used with or without [Keras](http://keras.io/) or [Lasagne](http://lasagne.readthedocs.io/en/latest/)
 
 ## Build
 
