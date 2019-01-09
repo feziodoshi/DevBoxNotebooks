@@ -1,4 +1,4 @@
-## **colinconwell/deep-notebooks**:some-notebook
+## **colinconwell/deep-notebooks**:crockpot-notebook
 
 Dockerfile for building for building the deep-learning framework <framework link> for use with jupyter notebook. This docker image can be used with Jupyterhub + DockerSpawner to spawn single-user notebooks.
 
