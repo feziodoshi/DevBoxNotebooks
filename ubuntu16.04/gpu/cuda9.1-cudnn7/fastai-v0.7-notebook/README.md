@@ -1,4 +1,4 @@
-## **colinconwell/deep-notebooks**:FastAI-0.7.0-notebook
+## **colinconwell/deep-notebooks**:fastai-0.7.0-notebook
 
 Dockerfile for building for building the deep-learning framework FastAI for use with jupyter notebook. This docker image can be used with Jupyterhub + DockerSpawner to spawn single-user notebooks.
 
