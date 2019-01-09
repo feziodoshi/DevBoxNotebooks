@@ -1,26 +1,26 @@
-## **grez72/deep-notebooks**:ubuntu16.04-gpu-cuda9.1-cudnn7-torch-notebook
+## **colinconwell/deep-notebooks**:some-notebook
 
-Dockerfile for building for building the deep-learning framework [PyTorch](https://pytorch.org/) for use with jupyter notebook. This docker image can be used with Jupyterhub + DockerSpawner to spawn single-user notebooks.
+Dockerfile for building for building the deep-learning framework <framework link> for use with jupyter notebook. This docker image can be used with Jupyterhub + DockerSpawner to spawn single-user notebooks.
 
 ## Base Notebook
 * Ubuntu 16.04
-* [CUDA 9.1](https://developer.nvidia.com/cuda-toolkit) (GPU version only)
-* [cuDNN v7](https://developer.nvidia.com/cudnn) (GPU version only)
+* [CUDA](https://developer.nvidia.com/cuda-toolkit) (GPU version only)
+* [cuDNN](https://developer.nvidia.com/cudnn) (GPU version only)
 * [iPython/Jupyter Notebook](http://jupyter.org/) (including python2 and python3 kernals)
 * [Numpy](http://www.numpy.org/), [SciPy](https://www.scipy.org/), [Pandas](http://pandas.pydata.org/), [Scikit Learn](http://scikit-learn.org/), [Matplotlib](http://matplotlib.org/)
 * [OpenCV](http://opencv.org/)
 
 ### pull it from dockerhub
 ```
-$ docker pull grez72/deep-notebooks:ubuntu16.04-gpu-cuda9-cudnn7-base-notebook
+$ docker pull <dockerhub link>
 ```
 
 ### build it from github repository
 ```
-sudo nvidia-docker build -t grez72/deep-notebooks:ubuntu16.04-gpu-cuda9-cudnn7-base-notebook https://github.com/grez72/notebooks.git#master:ubuntu14.04/gpu/cuda8-cudnn5/base-notebook
+sudo nvidia-docker build -t <dockerhub link> <github link>
 ```
 
 # run it as standalone container
-nvidia-docker run -it --rm -p 8888:8888 grez72/deep-notebooks:ubuntu16.04-gpu-cuda9-cudnn7-base-notebook
+nvidia-docker run -it --rm -p 8888:8888 <dockerhub link>
 
 # run it with jupyterhub and Dockerspawner
