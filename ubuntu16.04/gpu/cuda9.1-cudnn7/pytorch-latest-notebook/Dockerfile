@@ -16,9 +16,9 @@ MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 USER root
 WORKDIR $HOME
 
-==============================================================
- INSTALL PYTORCH
-==============================================================
+# ==============================================================
+#  INSTALL PYTORCH
+# ==============================================================
 
 RUN pip install --upgrade pip \
   && conda update conda \
