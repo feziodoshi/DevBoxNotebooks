@@ -40,5 +40,5 @@ RUN pip install --upgrade certifi
 #  set workdir and user for jupyter notebook use
 # ==============================================================
 
-RUNWORKDIR /home/$NB_USER/work/
+WORKDIR /home/$NB_USER/work/
 USER $NB_USER
