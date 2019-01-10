@@ -19,6 +19,7 @@ WORKDIR $HOME
 #  INSTALL TENSORFLOW
 # ==============================================================
 
+RUN pip install --upgrade pip
 RUN pip install --upgrade tf-nightly-gpu
 
 # ==============================================================
