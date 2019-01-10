@@ -26,7 +26,7 @@ RUN pip install --upgrade pip \
   && conda install pytorch torchvision cuda91 -c pytorch
 
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
-ENV CUDA_VISIBLE_DEVICES 0,1
+ENV CUDA_VISIBLE_DEVICES 0,1,2,3
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
