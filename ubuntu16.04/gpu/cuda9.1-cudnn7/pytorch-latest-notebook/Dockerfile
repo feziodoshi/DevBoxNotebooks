@@ -34,9 +34,11 @@ RUN pip install --upgrade keras
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
 ENV CUDA_VISIBLE_DEVICES 2,3
 
+RUN pip install --upgrade certifi
+
 # ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
 
-WORKDIR /home/$NB_USER/work/
+RUNWORKDIR /home/$NB_USER/work/
 USER $NB_USER
