@@ -16,27 +16,14 @@ MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 USER root
 WORKDIR $HOME
 
-# ==============================================================
-#  INSTALL TENSORFLOW
-# ==============================================================
+==============================================================
+ INSTALL PYTORCH
+==============================================================
 
-# RUN pip install --upgrade pip
-# RUN pip install --upgrade tf-nightly-gpu
-#
-# # ==============================================================
-# #  INSTALL KERAS
-# # ==============================================================
-#
-# RUN pip install --upgrade keras
-
-# ==============================================================
-#  INSTALL PYTORCH
-# ==============================================================
-
-# RUN pip install --upgrade pip \
-#   && conda update conda \
-#   && conda install -y mkl -c intel \
-#   && conda install pytorch torchvision cuda91 -c pytorch
+RUN pip install --upgrade pip \
+  && conda update conda \
+  && conda install -y mkl -c intel \
+  && conda install pytorch torchvision cuda91 -c pytorch
 
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
 ENV CUDA_VISIBLE_DEVICES 0,1
