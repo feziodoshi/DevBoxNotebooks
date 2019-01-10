@@ -19,7 +19,7 @@ WORKDIR $HOME
 #  INSTALL TENSORFLOW
 # ==============================================================
 
-RUN pip install --upgrade tensorflow-gpu
+RUN pip install --upgrade tf-nightly-gpu
 
 # ==============================================================
 #  INSTALL KERAS
