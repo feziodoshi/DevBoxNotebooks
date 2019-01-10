@@ -8,7 +8,8 @@
 # test it
 # nvidia-docker run -it --rm cocoflow/pytorch:ubuntu16.04-cuda9.1-cudnn7 nvidia-smi
 
-FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
+#FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
+FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-tensorflow-v1.9-notebook
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
@@ -19,14 +20,14 @@ WORKDIR $HOME
 #  INSTALL TENSORFLOW
 # ==============================================================
 
-RUN pip install --upgrade pip
-RUN pip install --upgrade tf-nightly-gpu
-
-# ==============================================================
-#  INSTALL KERAS
-# ==============================================================
-
-RUN pip install --upgrade keras
+# RUN pip install --upgrade pip
+# RUN pip install --upgrade tf-nightly-gpu
+#
+# # ==============================================================
+# #  INSTALL KERAS
+# # ==============================================================
+#
+# RUN pip install --upgrade keras
 
 # ==============================================================
 #  INSTALL PYTORCH
@@ -38,6 +39,7 @@ RUN pip install --upgrade keras
 #   && conda install pytorch torchvision cuda91 -c pytorch
 
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
+ENV CUDA_VISIBLE_DEVICES 0,1
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
