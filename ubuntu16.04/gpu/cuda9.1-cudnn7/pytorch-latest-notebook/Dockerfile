@@ -36,6 +36,8 @@ RUN pip install --upgrade keras
 #   && conda install -y mkl -c intel \
 #   && conda install pytorch torchvision cuda91 -c pytorch
 
+ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
+
 # ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
