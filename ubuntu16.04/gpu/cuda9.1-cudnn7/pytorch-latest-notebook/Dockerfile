@@ -16,13 +16,25 @@ USER root
 WORKDIR $HOME
 
 # ==============================================================
+#  INSTALL TENSORFLOW
+# ==============================================================
+
+RUN pip install --upgrade tensorflow-gpu
+
+# ==============================================================
+#  INSTALL KERAS
+# ==============================================================
+
+RUN pip install --upgrade keras
+
+# ==============================================================
 #  INSTALL PYTORCH
 # ==============================================================
 
-RUN pip install --upgrade pip \
-  && conda update conda \
-  && conda install -y mkl -c intel \
-  && conda install pytorch torchvision cuda91 -c pytorch
+# RUN pip install --upgrade pip \
+#   && conda update conda \
+#   && conda install -y mkl -c intel \
+#   && conda install pytorch torchvision cuda91 -c pytorch
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
