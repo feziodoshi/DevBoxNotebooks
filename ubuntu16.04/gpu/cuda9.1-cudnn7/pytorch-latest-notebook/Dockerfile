@@ -20,13 +20,13 @@ WORKDIR $HOME
 #  INSTALL PYTORCH
 # ==============================================================
 
-RUN pip install --upgrade pip \
-  && conda update conda \
-  && conda install -y mkl -c intel \
-  && conda install pytorch torchvision cuda91 -c pytorch
+# RUN pip install --upgrade pip \
+#   && conda update conda \
+#   && conda install -y mkl -c intel \
+#   && conda install pytorch torchvision cuda91 -c pytorch
 
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
-ENV CUDA_VISIBLE_DEVICES 0,1,2,3
+ENV CUDA_VISIBLE_DEVICES 2,3
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
