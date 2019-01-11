@@ -40,13 +40,12 @@ RUN pip install --upgrade gym \
     && jupyter labextension install @mflevine/jupyterlab_html \
     && jupyter labextension install jupyterlab-drawio \
     && jupyter labextension install jupyterlab-scales \
-    && jupyter labextension install jupyterlab_bokeh \
+    && jupyter labextension install jupyterlab_bokeh
 
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
-
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
