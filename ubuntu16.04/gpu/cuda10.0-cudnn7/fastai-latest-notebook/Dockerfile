@@ -1,11 +1,10 @@
-# cocoflow/fastai:ubuntu16.04-cuda9.1-cudnn7
+# cocoflow/fastai:latest
 # FastAI jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
 
-# sudo nvidia-docker build -t cocoflow/fastai:ubuntu16.04-cuda9.1-cudnn7 https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda9.1-cudnn7/fastai-latest-notebook
+# Build Command:
+# > sudo nvidia-docker build -t cocoflow/fastai:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/fastai-latest-notebook
 
-# nvidia-docker run -it --rm cocoflow/fastai:ubuntu16.04-cuda9.1-cudnn7 nvidia-smi
-
-FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
+FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda10.0-cudnn7-minimal-notebook
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
@@ -18,7 +17,7 @@ WORKDIR $HOME
 
 RUN pip install pip -U \
   && conda update conda
-RUN conda install -c pytorch pytorch-nightly cuda90 \
+RUN conda install -c pytorch pytorch-nightly cuda100 \
   && conda install -c fastai torchvision-nightly
 RUN conda install -c fastai fastai
 #RUN git clone https://github.com/fastai/fastai.git
