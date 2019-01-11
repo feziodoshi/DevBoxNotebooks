@@ -23,6 +23,13 @@ RUN conda install -c pytorch torchvision \
 #RUN git clone https://github.com/fastai/fastai.git
 
 # ==============================================================
+#  Set Cuda Variables
+# ==============================================================
+
+ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
+ENV CUDA_VISIBLE_DEVICES 2,3
+
+# ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
 
