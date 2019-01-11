@@ -34,11 +34,13 @@ RUN pip install --upgrade gym \
   #   && cd jupyterlab-variableInspector && npm install \
   #   && npm run build && jupyter labextension install .
 
-  RUN jupyter labextension install @jupyterlab/plotly-extension \
+  RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager \
+    && jupyter labextension install @jupyterlab/plotly-extension \
     && jupyter labextension install @mflevine/jupyterlab_html \
     && jupyter labextension install jupyterlab-drawio \
-    && jupyter labextension install jupyterlab-scales \
-    && jupyter labextension install jupyterlab_bokeh
+    && jupyter labextension install jupyterlab-scales
+
+  RUN conda install -n base -c conda-forge widgetsnbextension
 
   #RUN jupyter contrib nbextension install --user
 
