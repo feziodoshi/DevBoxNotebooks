@@ -25,12 +25,6 @@ RUN pip install --upgrade pip \
 
 RUN conda install pytorch torchvision cuda100 -c pytorch
 
-# # ==============================================================
-# #  Install FastAI
-# # ==============================================================
-#
-# RUN conda install -c fastai fastai
-
 # ==============================================================
 #  Install Tensorflow
 # ==============================================================
