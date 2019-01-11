@@ -1,15 +1,9 @@
 # cocoflow/pytorch:ubuntu16.04-cuda9.1-cudnn7
-#
-# Pytorch 0.4.0 jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
-#
-# ssh into apophenia (or whatever you machine is named)
-# sudo nvidia-docker build -t cocoflow/pytorch:ubuntu16.04-cuda9.1-cudnn7 https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda9.1-cudnn7/pytorch-latest-notebook
-#
-# test it
-# nvidia-docker run -it --rm cocoflow/pytorch:ubuntu16.04-cuda9.1-cudnn7 nvidia-smi
 
-#FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
-FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-tensorflow-v1.9-notebook
+# Pytorch 0.4.0 jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
+# sudo nvidia-docker build -t cocoflow/tfkeras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda9.1-cudnn7/tfkeras-latest-notebook
+
+FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
@@ -17,19 +11,27 @@ USER root
 WORKDIR $HOME
 
 # ==============================================================
-#  INSTALL KERAS
+#  Update Pip & Conda
 # ==============================================================
 
-RUN pip install --upgrade keras
+RUN pip install --upgrade pip \
+ && conda update conda
+
+ # ==============================================================
+ #  INSTALL TENSORFLOW
+ # ==============================================================
+
+ RUN pip install --upgrade tf-nightly-gpu
+
+ # ==============================================================
+ #  INSTALL KERAS
+ # ==============================================================
+
+ RUN pip install --upgrade keras
 
 # ==============================================================
-#  INSTALL PYTORCH
+#  Set Cuda Variables
 # ==============================================================
-
-# RUN pip install --upgrade pip \
-#   && conda update conda \
-#   && conda install -y mkl -c intel \
-#   && conda install pytorch torchvision cuda91 -c pytorch
 
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
 ENV CUDA_VISIBLE_DEVICES 2,3
