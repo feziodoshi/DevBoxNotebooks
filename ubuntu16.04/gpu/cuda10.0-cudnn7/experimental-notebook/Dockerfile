@@ -23,6 +23,14 @@ RUN pip install --upgrade gym \
   && pip install 'gym[atari]' \
   && pip install 'gym[box2d]'
 
+  # ==============================================================
+  #  Install Jupyterlab Extensions
+  # ==============================================================
+
+  RUN git clone https://github.com/lckr/jupyterlab-variableInspector \
+    && cd jupyterlab-variableInspector && npm install
+    && npm run build && jupyter labextension install .
+
 # ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
