@@ -50,7 +50,13 @@ RUN pip install --upgrade keras
 RUN pip install --upgrade pyro-ppl
 
 # ==============================================================
-#  set workdir and user for jupyter notebook use
+#  Additional Instructions
+# ==============================================================
+
+RUN conda clean -tipsy
+
+# ==============================================================
+#  Set workdir and user for jupyter notebook use.
 # ==============================================================
 
 WORKDIR /home/$NB_USER/work/
