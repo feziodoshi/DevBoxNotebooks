@@ -27,6 +27,8 @@ RUN pip install --upgrade gym \
   #  Install Jupyterlab Extensions
   # ==============================================================
 
+  RUN npm cache clean -f && npm install -g n && n stable
+
   RUN conda install -c conda-forge ipywidgets \
    && conda install -c conda-forge jupyter_contrib_nbextensions \
    && conda install -c conda-forge jupyter_nbextensions_configurator \
