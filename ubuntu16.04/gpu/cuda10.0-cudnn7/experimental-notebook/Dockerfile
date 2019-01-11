@@ -28,7 +28,7 @@ RUN pip install --upgrade gym \
   # ==============================================================
 
   RUN conda install -c conda-forge jupyter_contrib_nbextensions \
-   && conda install -c conda-forge jupyter_nbextensions_configurator \
+   && conda install -c conda-forge jupyter_nbextensions_configurator
 
   # RUN git clone https://github.com/lckr/jupyterlab-variableInspector \
   #   && cd jupyterlab-variableInspector && npm install \
