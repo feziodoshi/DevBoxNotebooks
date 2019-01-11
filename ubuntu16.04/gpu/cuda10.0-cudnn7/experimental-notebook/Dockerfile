@@ -40,7 +40,7 @@ RUN pip install --upgrade gym \
     && jupyter labextension install jupyterlab-scales \
     && jupyter labextension install jupyterlab_bokeh
 
-  RUN jupyter contrib nbextension install --user
+  #RUN jupyter contrib nbextension install --user
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
