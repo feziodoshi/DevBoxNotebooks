@@ -1,7 +1,7 @@
-# cocoflow/crockpot:ubuntu16.04-cuda9.1-cudnn7
+# cocoflow/experimental:latest
 # Jupyter notebook with gpu suppport (nvidia CUDA cuDNN), and various frameworks installed.
 
-# Build Instructions:
+# Build Command:
 # > sudo nvidia-docker build -t cocoflow/experimental:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/experimental-notebook
 
 FROM cocoflow/crockpot:latest
