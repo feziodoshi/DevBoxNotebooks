@@ -4,7 +4,7 @@
 # Build Command:
 # > sudo nvidia-docker build -t cocoflow/fastai:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/fastai-latest-notebook
 
-FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda10.0-cudnn7-minimal-notebook
+FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda10.0-cudnn7-base-notebook
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
