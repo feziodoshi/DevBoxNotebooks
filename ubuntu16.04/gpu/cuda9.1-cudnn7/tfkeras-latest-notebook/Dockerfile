@@ -22,7 +22,7 @@ RUN pip install --upgrade pip \
  #  INSTALL TENSORFLOW
  # ==============================================================
 
- RUN pip install --upgrade tensorflow-gpu
+ #RUN pip install --upgrade tensorflow-gpu
 
  # ==============================================================
  #  INSTALL KERAS
