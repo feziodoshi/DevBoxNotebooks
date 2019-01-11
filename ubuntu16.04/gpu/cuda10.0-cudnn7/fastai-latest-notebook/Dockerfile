@@ -17,9 +17,8 @@ WORKDIR $HOME
 
 RUN pip install pip -U \
   && conda update conda
-RUN conda install -c pytorch pytorch-nightly cuda100 \
-  && conda install -c fastai torchvision-nightly
-RUN conda install -c fastai fastai
+RUN conda install -c pytorch torchvision cuda100 \
+  && conda install -c fastai fastai
 #RUN git clone https://github.com/fastai/fastai.git
 
 # ==============================================================
