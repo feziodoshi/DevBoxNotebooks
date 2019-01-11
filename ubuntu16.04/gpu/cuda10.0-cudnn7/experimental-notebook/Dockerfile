@@ -4,43 +4,12 @@
 # Build Instructions:
 # > sudo nvidia-docker build -t cocoflow/experimental:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/experimental-notebook
 
-FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+FROM cocoflow/crockpot:latest
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
 USER root
 WORKDIR $HOME
-
-# ==============================================================
-#  PIP & CONDA UPDATES?
-# ==============================================================
-
-RUN pip install --upgrade pip \
-  && conda update conda
-
-# ==============================================================
-#  INSTALL PYTORCH
-# ==============================================================
-
-RUN conda install pytorch torchvision cuda100 -c pytorch
-
-# ==============================================================
-#  INSTALL TENSORFLOW
-# ==============================================================
-
-RUN pip install --upgrade tf-nightly-gpu
-
-# ==============================================================
-#  INSTALL KERAS
-# ==============================================================
-
-RUN pip install --upgrade keras
-
-# ==============================================================
-#  INSTALL PYRO
-# ==============================================================
-
-RUN pip install --upgrade pyro-ppl
 
 # ==============================================================
 #  INSTALL OPENAI-GYM
