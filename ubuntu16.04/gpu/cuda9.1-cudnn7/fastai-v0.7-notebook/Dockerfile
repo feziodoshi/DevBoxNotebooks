@@ -23,9 +23,10 @@ RUN pip install torchtext==0.2.3
 #RUN git clone https://github.com/fastai/fastai.git
 
 # ==============================================================
-#  Set Cuda Variables
+#  Set GPU Envionrment Variables
 # ==============================================================
 
+ENV NVIDIA_VISIBLE_DEVICES 2,3
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
 ENV CUDA_VISIBLE_DEVICES 2,3
 
