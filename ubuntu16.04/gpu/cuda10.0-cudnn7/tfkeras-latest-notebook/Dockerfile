@@ -1,7 +1,7 @@
 # cocoflow/pytorch:ubuntu16.04-cuda9.1-cudnn7
 
 # Pytorch 0.4.0 jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
-# sudo nvidia-docker build -t cocoflow/tfkeras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda9.1-cudnn7/tfkeras-latest-notebook
+# sudo nvidia-docker build -t cocoflow/tfkeras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/tfkeras-latest-notebook
 
 FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
