@@ -25,11 +25,11 @@ RUN pip install --upgrade pip \
 
 RUN conda install pytorch torchvision cuda100 -c pytorch
 
-# ==============================================================
-#  Install FastAI
-# ==============================================================
-
-RUN conda install -c fastai fastai
+# # ==============================================================
+# #  Install FastAI
+# # ==============================================================
+#
+# RUN conda install -c fastai fastai
 
 # ==============================================================
 #  Install Tensorflow
@@ -48,12 +48,6 @@ RUN pip install --upgrade keras
 # ==============================================================
 
 RUN pip install --upgrade pyro-ppl
-
-# ==============================================================
-#  Additional Instructions
-# ==============================================================
-
-RUN conda clean -tipsy
 
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.
