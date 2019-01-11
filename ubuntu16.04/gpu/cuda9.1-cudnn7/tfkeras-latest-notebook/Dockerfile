@@ -4,7 +4,7 @@
 # Build Command:
 # > sudo nvidia-docker build -t cocoflow/tensorflow-keras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/tfkeras-latest-notebook
 
-FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
@@ -22,7 +22,7 @@ RUN pip install --upgrade pip \
  #  INSTALL TENSORFLOW
  # ==============================================================
 
- RUN pip install --upgrade tf-nightly-gpu
+ RUN pip install --upgrade tensorflow-gpu
 
  # ==============================================================
  #  INSTALL KERAS
