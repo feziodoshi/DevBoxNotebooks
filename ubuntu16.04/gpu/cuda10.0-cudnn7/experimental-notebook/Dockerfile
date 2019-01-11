@@ -28,7 +28,7 @@ RUN pip install --upgrade gym \
   # ==============================================================
 
   RUN git clone https://github.com/lckr/jupyterlab-variableInspector \
-    && cd jupyterlab-variableInspector && npm install
+    && cd jupyterlab-variableInspector && npm install \
     && npm run build && jupyter labextension install .
 
 # ==============================================================
