@@ -27,7 +27,10 @@ RUN pip install --upgrade gym \
   #  Install Jupyterlab Extensions
   # ==============================================================
 
-  RUN conda install -c conda-forge jupyter_nbextensions_configurator
+  RUN conda install -c conda-forge ipywidgets \
+   && conda install -c conda-forge jupyter_contrib_nbextensions \
+   && conda install -c conda-forge jupyter_nbextensions_configurator \
+   && jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
   # RUN git clone https://github.com/lckr/jupyterlab-variableInspector \
   #   && cd jupyterlab-variableInspector && npm install \
