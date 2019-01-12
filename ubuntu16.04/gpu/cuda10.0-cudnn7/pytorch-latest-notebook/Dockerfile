@@ -4,7 +4,8 @@
 # Build Command:
 # > sudo nvidia-docker build -t cocoflow/pytorch:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/pytorch-latest-notebook
 
-FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+#FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
