@@ -24,7 +24,7 @@ RUN pip install --upgrade pip \
 #  INSTALL PYTORCH
 # ==============================================================
 
-RUN conda install pytorch torchvision cuda90 -c pytorch
+RUN conda install pytorch torchvision -c pytorch
 
 # ==============================================================
 #  INSTALL KERAS
