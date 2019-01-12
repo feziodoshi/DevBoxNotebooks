@@ -22,7 +22,7 @@ RUN pip install --upgrade pip \
 #  Install PyTorch
 # ==============================================================
 
-RUN conda install pytorch==0.4.1 torchvision cuda90 -c pytorch
+RUN conda install pytorch=0.4.1 torchvision cuda90 -c pytorch
 
 # ==============================================================
 #  Set Cuda Variables
