@@ -2,9 +2,10 @@
 # Pytorch jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
 
 # Build Command:
-# > sudo nvidia-docker build -t cocoflow/pytorch:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/pytorch-latest-notebook
+# > sudo nvidia-docker build -t cocoflow/pytorch:ubuntu16.04-cuda9.1-cudnn7 https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda9.1-cudnn7/pytorch-v0.4-notebook
 
-FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+#FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+FROM grez72/deep-notebooks:ubuntu16.04-gpu-cuda9.1-cudnn7-minimal-notebook
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
@@ -22,14 +23,14 @@ RUN pip install --upgrade pip \
 #  Install PyTorch
 # ==============================================================
 
-RUN conda install pytorch torchvision cuda100 -c pytorch
+RUN conda install pytorch=0.4.1 torchvision=0.2.1 cuda90 -c pytorch
 
 # ==============================================================
 #  Set Cuda Variables
 # ==============================================================
 
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
-ENV CUDA_VISIBLE_DEVICES 0,1,2,3
+ENV CUDA_VISIBLE_DEVICES 2,3
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
