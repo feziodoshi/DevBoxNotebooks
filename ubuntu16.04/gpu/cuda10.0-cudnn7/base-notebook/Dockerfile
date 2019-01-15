@@ -42,7 +42,7 @@
 
 FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
-LABEL maintainer="George Alvarez <alvarez@wjh.harvard.com>"
+LABEL maintainer="Colin Conwell <conwell@g.harvard.edu>"
 
 USER root
 
