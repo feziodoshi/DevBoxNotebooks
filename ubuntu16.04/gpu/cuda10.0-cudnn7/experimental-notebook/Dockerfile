@@ -83,8 +83,8 @@ RUN conda install --quiet --yes \
 #  Install NodeJavascript Kernel
 # ==============================================================
 
-RUN npm install -g ijavascript
-RUN ijsinstall
+RUN apt-get install nodejs-legacy npm ipython ipython-notebook \
+  && npm install -g ijavascript && ijsinstall
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
