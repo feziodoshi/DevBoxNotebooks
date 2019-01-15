@@ -38,11 +38,11 @@ RUN pip install --upgrade gym \
    && jupyter labextension install @jupyterlab/celltags
    #&& jupyter labextension install jupyterlab_voyager
 
-  RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
-
   RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
-    && cd jupyterlab-variableInspector && npm install \
-    && npm run build && jupyter labextension install .
+   && cd jupyterlab-variableInspector && npm install \
+   && npm run build && jupyter labextension install .
+
+  RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
