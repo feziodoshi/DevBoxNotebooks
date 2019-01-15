@@ -83,7 +83,7 @@ RUN conda install --quiet --yes \
 # #  Install NodeJavascript Kernel
 # # ==============================================================
 #
-  RUN npm install -g ijavascript
+  RUN npm install -g --unsafe-perm ijavascript
 # RUN apt-get install nodejs-legacy npm ipython ipython-notebook \
 #   && npm install -g ijavascript && ijsinstall
 
