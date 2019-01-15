@@ -31,16 +31,16 @@ RUN pip install --upgrade gym \
    && conda install -c conda-forge jupyter_contrib_nbextensions \
    && conda install -c conda-forge jupyter_nbextensions_configurator
 
-  RUN git clone https://github.com/lckr/jupyterlab-variableInspector \
+  RUN jupyter labextension install @jupyterlab/plotly-extension \
+   && jupyter labextension install @mflevine/jupyterlab_html \
+   && jupyter labextension install jupyterlab-drawio \
+   && jupyter labextension install jupyterlab-scales \
+   && jupyter labextension install @jupyterlab/celltags
+   #&& jupyter labextension install jupyterlab_voyager
+
+  RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
     && cd jupyterlab-variableInspector && npm install \
     && npm run build && jupyter labextension install .
-
-  RUN jupyter labextension install @jupyterlab/plotly-extension \
-    && jupyter labextension install @mflevine/jupyterlab_html \
-    && jupyter labextension install jupyterlab-drawio \
-    && jupyter labextension install jupyterlab-scales \
-    && jupyter labextension install @jupyterlab/celltags
-    #&& jupyter labextension install jupyterlab_voyager
 
   RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
 
