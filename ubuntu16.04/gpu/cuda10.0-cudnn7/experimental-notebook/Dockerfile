@@ -45,12 +45,6 @@ RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
 RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
 
 # ==============================================================
-#  Install NodeJavascript Kernel
-# ==============================================================
-
-RUN npm install -g ijavascript && ijsinstall
-
-# ==============================================================
 #  Install R Kernel
 # ==============================================================
 
@@ -84,6 +78,13 @@ RUN conda install --quiet --yes \
   'r-htmlwidgets=1.2*' \
   'r-hexbin=1.27*' \
   && conda clean -tipsy
+
+# ==============================================================
+#  Install NodeJavascript Kernel
+# ==============================================================
+
+RUN npm install -g ijavascript
+RUN ijsinstall
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
