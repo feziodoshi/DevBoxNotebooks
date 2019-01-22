@@ -10,8 +10,7 @@ MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
 USER root
 RUN pip install jupyter -U && pip install jupyterlab
-COPY jupyter_notebook_config.py /etc/jupyter/
-COPY genpass.py .
+COPY notebook_config.py /etc/jupyter/
 RUN fix-permissions /etc/jupyter/
 
 RUN pip3 install \
@@ -23,8 +22,7 @@ RUN useradd -m jovyan
 ENV HOME=/home/jovyan
 WORKDIR $HOME
 
-COPY jupyter_notebook_config.py /etc/jupyter/
-COPY genpass.py .
+COPY notebook_config.py /etc/jupyter/
 RUN fix-permissions /etc/jupyter/
 
 USER jovyan
