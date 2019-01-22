@@ -8,6 +8,12 @@ FROM nvcr.io/nvidia/tensorflow:18.12-py3
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
+USER root
+RUN pip install jupyter -U && pip install jupyterlab
+COPY jupyter_notebook_config.py /etc/jupyter/
+COPY genpass.py .
+RUN fix-permissions /etc/jupyter/
+
 RUN pip3 install \
     jupyterhub==0.7.2 \
     'notebook>=5.0,<=6.0'
@@ -16,6 +22,11 @@ RUN pip3 install \
 RUN useradd -m jovyan
 ENV HOME=/home/jovyan
 WORKDIR $HOME
+
+COPY jupyter_notebook_config.py /etc/jupyter/
+COPY genpass.py .
+RUN fix-permissions /etc/jupyter/
+
 USER jovyan
 
 CMD ["jupyterhub-singleuser"]
