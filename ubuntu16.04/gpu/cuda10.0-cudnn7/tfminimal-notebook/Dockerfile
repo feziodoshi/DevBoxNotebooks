@@ -44,7 +44,7 @@ EXPOSE 8888
 
 ENV TINI_VERSION v0.18.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
+RUN sudo chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
 CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
