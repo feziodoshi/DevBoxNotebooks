@@ -26,10 +26,11 @@ RUN cd '/opt/conda/lib/python3.6/site-packages/fastai/' \
 #RUN git clone https://github.com/fastai/fastai.git
 
 # ==============================================================
-#  Fix Jupyterlab Bug by Upgrade
+#  Upgrade Jupyterlab for Widgets
 # ==============================================================
 
-RUN pip install jupyterlab==0.32.1
+RUN pip install jupyterlab==0.32.1 \
+  && conda install -c conda-forge ipywidgets
 
 # ==============================================================
 #  Set GPU Envionrment Variables
