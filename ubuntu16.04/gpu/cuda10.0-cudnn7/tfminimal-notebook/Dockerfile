@@ -42,7 +42,7 @@ USER jovyan
 
 EXPOSE 8888
 
-ENTRYPOINT ["tini", "-g", "--"]
+#ENTRYPOINT ["tini", "-g", "--"]
 CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
 
 #!pip install opencv-python
