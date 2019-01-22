@@ -8,6 +8,30 @@ FROM nvcr.io/nvidia/tensorflow:18.12-py3
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
+#--------------------------------------
+#   OS dependencies
+#--------------------------------------
+
+USER root
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && apt-get -yq dist-upgrade \
+ && apt-get install -yq --no-install-recommends \
+    wget \
+    bzip2 \
+    ca-certificates \
+    sudo \
+    locales \
+    fonts-liberation \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen
+
+#--------------------------------------
+#   Configure environment
+#--------------------------------------
+
 ENV CONDA_DIR=/opt/conda \
     SHELL=/bin/bash \
     NB_USER=jovyan \
