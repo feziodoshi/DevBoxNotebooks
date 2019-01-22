@@ -30,7 +30,8 @@ RUN cd '/opt/conda/lib/python3.6/site-packages/fastai/' \
 # ==============================================================
 
 RUN pip install jupyterlab==0.32.1 \
-  && conda install -c conda-forge ipywidgets
+  && conda install -c conda-forge ipywidgets \
+  && jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 # ==============================================================
 #  Set GPU Envionrment Variables
