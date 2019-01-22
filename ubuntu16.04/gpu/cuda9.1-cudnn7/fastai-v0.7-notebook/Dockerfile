@@ -16,7 +16,7 @@ WORKDIR $HOME
 # Update JupyterLab
 # ==============================================================
 
-pip install --upgrade jupyterlab
+RUN pip install --upgrade jupyterlab
 
 # ==============================================================
 #  INSTALL FASTAI
