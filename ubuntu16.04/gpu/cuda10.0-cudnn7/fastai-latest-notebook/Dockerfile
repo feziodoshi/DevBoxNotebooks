@@ -18,7 +18,7 @@ WORKDIR $HOME
 
 RUN pip install pip -U \
   && conda update conda
-RUN conda install -c pytorch torchvision \
+RUN conda install -c pytorch cuda100 \
   && conda install -c fastai fastai
 #RUN git clone https://github.com/fastai/fastai.git
 
@@ -27,7 +27,7 @@ RUN conda install -c pytorch torchvision \
 # ==============================================================
 
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
-ENV CUDA_VISIBLE_DEVICES 2,3
+ENV CUDA_VISIBLE_DEVICES 0,1,2,3
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use

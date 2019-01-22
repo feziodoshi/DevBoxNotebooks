@@ -24,6 +24,14 @@ RUN pip install --upgrade pip \
 
  RUN pip install --upgrade keras
 
+ # ==============================================================
+ #  Upgrade Jupyterlab for Widgets
+ # ==============================================================
+
+ RUN pip install jupyterlab==0.32.1 \
+   && conda install -c conda-forge ipywidgets \
+   && jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
 # ==============================================================
 #  Set Cuda Variables
 # ==============================================================
