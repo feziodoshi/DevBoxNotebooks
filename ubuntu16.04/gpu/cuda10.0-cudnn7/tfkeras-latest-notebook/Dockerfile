@@ -2,9 +2,9 @@
 # Tensorflow + Keras jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
 
 # Build Command:
-# > sudo nvidia-docker build -t cocoflow/tensorflow-keras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda9.1-cudnn7/tfkeras-latest-notebook
+# > sudo nvidia-docker build -t cocoflow/tensorflow-keras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/tfkeras-latest-notebook
 
-FROM ncvr.io/nvidia/tensorflow:18.12-py3
+FROM nvcr.io/nvidia/tensorflow:18.12-py3
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
