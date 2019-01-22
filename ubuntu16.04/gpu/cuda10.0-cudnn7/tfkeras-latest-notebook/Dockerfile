@@ -12,21 +12,21 @@ MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 #   OS dependencies
 #--------------------------------------
 
-USER root
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get -yq dist-upgrade \
- && apt-get install -yq --no-install-recommends \
-    wget \
-    bzip2 \
-    ca-certificates \
-    sudo \
-    locales \
-    fonts-liberation \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
-
-RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
-    locale-gen
+# USER root
+# ENV DEBIAN_FRONTEND noninteractive
+# RUN apt-get update && apt-get -yq dist-upgrade \
+#  && apt-get install -yq --no-install-recommends \
+#     wget \
+#     bzip2 \
+#     ca-certificates \
+#     sudo \
+#     locales \
+#     fonts-liberation \
+#  && apt-get clean \
+#  && rm -rf /var/lib/apt/lists/*
+#
+# RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+#     locale-gen
 
 #--------------------------------------
 #   Configure environment
@@ -102,7 +102,7 @@ RUN conda install --quiet --yes 'tini=0.18.0' && \
 USER root
 RUN pip install jupyter -U && pip install jupyterlab
 COPY jupyter_notebook_config.py /etc/jupyter/
-COPY genpass.py .
+#COPY genpass.py .
 RUN fix-permissions /etc/jupyter/
 
 WORKDIR $HOME/work
