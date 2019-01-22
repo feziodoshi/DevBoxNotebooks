@@ -20,8 +20,7 @@ RUN pip install pip -U \
   && conda update conda
 RUN pip install fastai==0.7.0
 RUN pip install torchtext==0.2.3
-RUN mkdir '/opt/conda/lib/python3.6/site-packages/fastai/' \
-  && cd '/opt/conda/lib/python3.6/site-packages/fastai/' \
+RUN cd '/opt/conda/lib/python3.6/site-packages/fastai/' \
   && wget http://files.fast.ai/models/weights.tgz \
   && tar -xvzf weights.tgz
 #RUN git clone https://github.com/fastai/fastai.git
