@@ -9,6 +9,7 @@ FROM nvcr.io/nvidia/tensorflow:18.12-py3
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
 RUN pip install jupyter --upgrade && pip install jupyterlab && pip install jupyterhub
+ADD fix-permissions /usr/local/bin/fix-permissions
 COPY notebook_config.py /etc/jupyter/
 COPY genpass.py .
 RUN fix-permissions /etc/jupyter/
