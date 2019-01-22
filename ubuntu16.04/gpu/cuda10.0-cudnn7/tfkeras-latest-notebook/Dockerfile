@@ -71,21 +71,20 @@ RUN mkdir /home/$NB_USER/work && \
 USER $NB_UID
 
 # Install conda as jovyan and check the md5 sum provided on the download site
-ENV MINICONDA_VERSION 4.5.4
-RUN cd /tmp && \
-    wget --quiet https://repo.continuum.io/miniconda/Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh && \
-    echo "a946ea1d0c4a642ddf0c3a26a18bb16d *Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh" | md5sum -c - && \
-    /bin/bash Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
-    rm Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh && \
-    $CONDA_DIR/bin/conda config --system --prepend channels conda-forge && \
-    $CONDA_DIR/bin/conda config --system --set auto_update_conda false && \
-    $CONDA_DIR/bin/conda config --system --set show_channel_urls true && \
-    $CONDA_DIR/bin/conda install --quiet --yes conda="${MINICONDA_VERSION%.*}.*" && \
-    $CONDA_DIR/bin/conda update --all --quiet --yes && \
-    conda clean -tipsy && \
-    rm -rf /home/$NB_USER/.cache/yarn && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+# ENV MINICONDA_VERSION 4.5.4
+# RUN cd /tmp && wget --quiet https://repo.continuum.io/miniconda/Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh && \
+#     echo "a946ea1d0c4a642ddf0c3a26a18bb16d *Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh" | md5sum -c - && \
+#     /bin/bash Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
+#     rm Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh && \
+#     $CONDA_DIR/bin/conda config --system --prepend channels conda-forge && \
+#     $CONDA_DIR/bin/conda config --system --set auto_update_conda false && \
+#     $CONDA_DIR/bin/conda config --system --set show_channel_urls true && \
+#     $CONDA_DIR/bin/conda install --quiet --yes conda="${MINICONDA_VERSION%.*}.*" && \
+#     $CONDA_DIR/bin/conda update --all --quiet --yes && \
+#     conda clean -tipsy && \
+#     rm -rf /home/$NB_USER/.cache/yarn && \
+#     fix-permissions $CONDA_DIR && \
+#     fix-permissions /home/$NB_USER
 
 # Install Tini
 USER $NB_UID
@@ -102,7 +101,7 @@ RUN conda install --quiet --yes 'tini=0.18.0' && \
 USER root
 RUN pip install jupyter -U && pip install jupyterlab
 COPY jupyter_notebook_config.py /etc/jupyter/
-#COPY genpass.py .
+COPY genpass.py .
 RUN fix-permissions /etc/jupyter/
 
 WORKDIR $HOME/work
