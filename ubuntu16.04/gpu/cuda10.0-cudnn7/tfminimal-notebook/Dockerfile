@@ -30,6 +30,11 @@ MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 # CMD ["jupyterhub-singleuser"]
 
 FROM python:3.6
+
+ENV TINI_VERSION v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
 RUN pip3 install \
     jupyterhub==0.7.2 \
     'notebook>=5.0,<=6.0'
@@ -42,11 +47,7 @@ USER jovyan
 
 EXPOSE 8888
 
-ENV TINI_VERSION v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN sudo chmod +x /tini
-ENTRYPOINT ["/tini", "--"]
-
+ENTRYPOINT ["tini", "-g", "--"]
 CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
 
 #!pip install opencv-python
