@@ -43,6 +43,12 @@ RUN pip install --upgrade keras
 RUN pip install --upgrade pyro-ppl
 
 # ==============================================================
+#  Install FastAI
+# ==============================================================
+
+RUN pip install --upgrade fastai
+
+# ==============================================================
 #  Set workdir and user for jupyter notebook use.
 # ==============================================================
 
