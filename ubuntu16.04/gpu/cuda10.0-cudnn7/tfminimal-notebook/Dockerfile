@@ -2,11 +2,11 @@
 # Tensorflow + Keras jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
 
 # Build Command:
-# > sudo nvidia-docker build -t cocoflow/tensorflow-keras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/tfkeras-latest-notebook
+# > sudo nvidia-docker build -t cocoflow/tensorflow-keras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/tfminimal-notebook
 
-# FROM nvcr.io/nvidia/tensorflow:18.12-py3
+FROM nvcr.io/nvidia/tensorflow:18.12-py3
 #
-# MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
+MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 #
 # ARG JUPYTERHUB_VERSION=0.8.0
 # RUN pip3 install --no-cache \
@@ -40,8 +40,10 @@ ENV HOME=/home/jovyan
 WORKDIR $HOME
 USER jovyan
 
-RUN echo $HOME
-CMD ["jupyterhub-singleuser"]
+EXPOSE 8888
+
+ENTRYPOINT ["tini", "-g", "--"]
+CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
 
 #!pip install opencv-python
 #!apt update && apt install -y libsm6 libxext6 libxrender-dev
