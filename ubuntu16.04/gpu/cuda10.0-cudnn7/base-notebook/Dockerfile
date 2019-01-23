@@ -40,6 +40,7 @@
 # If you are using jupyterhub, this image can be used with Dockerspawner to
 # spawn a single-user notebook.
 
+#https://gitlab.com/nvidia/cuda/blob/ubuntu16.04/10.0/base/Dockerfile
 FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
 LABEL maintainer="Colin Conwell <conwell@g.harvard.edu>"
