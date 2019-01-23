@@ -4,10 +4,27 @@
 # Build Command:
 # > sudo nvidia-docker build -t cocoflow/tensorflow-keras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/tfminimal-notebook
 
-FROM nvcr.io/nvidia/tensorflow:18.12-py3
-#
-MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
-#
+
+FROM python:3.6
+RUN pip3 install \
+    jupyterhub==0.7.2 \
+    'notebook>=5.0,<=6.0'
+RUN RUN chmod +x start-singleuser.sh
+
+# create a user, since we don't want to run as root
+RUN useradd -m jovyan
+ENV HOME=/home/jovyan
+WORKDIR $HOME
+USER jovyan
+
+CMD ["jupyterhub-singleuser"]
+
+
+
+# FROM nvcr.io/nvidia/tensorflow:18.12-py3
+# #
+# MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
+# #
 # ARG JUPYTERHUB_VERSION=0.8.0
 # RUN pip3 install --no-cache \
 #     jupyterhub==$JUPYTERHUB_VERSION
@@ -29,26 +46,26 @@ MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 #
 # CMD ["jupyterhub-singleuser"]
 
-FROM python:3.6
+# FROM python:3.6
+#
+# RUN pip3 install \
+#     jupyterhub==0.7.2 \
+#     'notebook>=5.0,<=6.0'
+#
+# # create a user, since we don't want to run as root
+# RUN useradd -m jovyan
+# ENV HOME=/home/jovyan
+# WORKDIR $HOME
+# USER jovyan
 
-ENV TINI_VERSION v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
+# USER jovyan
+#
+# CMD ["jupyterhub-singleuser"]
 
-RUN pip3 install \
-    jupyterhub==0.7.2 \
-    'notebook>=5.0,<=6.0'
-
-# create a user, since we don't want to run as root
-RUN useradd -m jovyan
-ENV HOME=/home/jovyan
-WORKDIR $HOME
-USER jovyan
-
-EXPOSE 8888
-
-ENTRYPOINT ["tini", "-g", "--"]
-CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
+# EXPOSE 8888
+#
+# ENTRYPOINT ["tini", "-g", "--"]
+# CMD ["jupyter", "lab","--ip=0.0.0.0","--allow-root"]
 
 #!pip install opencv-python
 #!apt update && apt install -y libsm6 libxext6 libxrender-dev
