@@ -120,6 +120,7 @@ RUN groupadd wheel -g 11 && \
     fix-permissions $CONDA_DIR
 
 USER $NB_UID
+RUN chmod u+x /usr/local/bin/fix-permissions
 
 # Setup work directory for backward-compatibility
 RUN mkdir /home/$NB_USER/work && \
