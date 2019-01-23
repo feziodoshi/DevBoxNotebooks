@@ -22,7 +22,7 @@ RUN pip install --upgrade pip \
 #  Install Tensorflow & Keras
 # ==============================================================
 
-RUN pip install tensorflow-nightly-gpu && keras
+RUN pip install tf-nightly-gpu && keras
 
 # ==============================================================
 #  Set Cuda Variables
