@@ -23,6 +23,7 @@ USER jovyan
 
 #CMD ["jupyterhub-singleuser"]
 COPY start-singleuser.sh /usr/local/bin/
+RUN chmod u+x /usr/local/bin/start-singleuser.sh
 CMD ['start-singleuser.sh']
 
 #USER root
