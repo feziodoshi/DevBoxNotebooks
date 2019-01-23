@@ -6,7 +6,7 @@
 
 #FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 FROM nvcr.io/nvidia/tensorflow:18.12-py3
-FROM jupyter/scipy-notebook
+#FROM jupyter/scipy-notebook
 LABEL maintainer="Colin Conwell <conwell@g.harvard.edu>"
 
 WORKDIR /home/$NB_USER/work/
