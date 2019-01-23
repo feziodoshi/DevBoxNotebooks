@@ -22,7 +22,7 @@
 
 
 
-#FROM nvcr.io/nvidia/tensorflow:18.12-py3
+FROM nvcr.io/nvidia/tensorflow:18.12-py3
 #FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 LABEL maintainer="Colin Conwell <conwell@g.harvard.edu>"
 
