@@ -5,8 +5,9 @@
 # > sudo nvidia-docker build -t cocoflow/tensorflow-keras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/tfminimal-notebook
 
 #FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
-FROM jupyter/scipy-notebook
+#FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+#FROM jupyter/scipy-notebook
+FROM tensorflow/tensorflow:nightly-gpu-py3-jupyter
 #FROM ncvr.io/nvidia/tensorflow:18.12-py3
 LABEL maintainer="Colin Conwell <conwell@g.harvard.edu>"
 
@@ -36,7 +37,7 @@ USER root
 # ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 # ENV NVIDIA_REQUIRE_CUDA "cuda>=10.0 brand=tesla,driver>=384,driver<385"
 
-RUN pip install tensorflow-gpu keras
+#RUN pip install tensorflow-gpu keras
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
