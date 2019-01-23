@@ -29,7 +29,7 @@ RUN pip install tf-nightly-gpu keras
 # ==============================================================
 
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
-ENV CUDA_VISIBLE_DEVICES 0,1,2,3
+ENV CUDA_VISIBLE_DEVICES 2,3
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
