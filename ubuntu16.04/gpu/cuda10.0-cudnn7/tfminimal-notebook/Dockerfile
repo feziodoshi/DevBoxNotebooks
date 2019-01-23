@@ -15,17 +15,14 @@ RUN pip3 install \
     jupyterhub==0.7.2 \
     'notebook>=5.0,<=6.0'
 
-COPY start-singleuser.sh /usr/local/bin/
-RUN chmod u+x /usr/local/bin/start-singleuser.sh
-
 # create a user, since we don't want to run as root
-RUN useradd -m jovyan
-ENV HOME=/home/jovyan
-WORKDIR $HOME
-USER jovyan
+# RUN useradd -m jovyan
+# ENV HOME=/home/jovyan
+# WORKDIR $HOME
+# USER jovyan
 
 #CMD ["jupyterhub-singleuser"]
-CMD ['start-singleuser.sh']
+#CMD ['start-singleuser.sh']
 
 #USER root
 
@@ -77,5 +74,5 @@ CMD ['start-singleuser.sh']
 
 #RUN pip install tensorflow-gpu keras
 
-# WORKDIR /home/$NB_USER/work/
-# USER $NB_USER
+WORKDIR /home/$NB_USER/work/
+USER $NB_USER
