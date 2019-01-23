@@ -22,7 +22,8 @@
 
 
 
-FROM nvcr.io/nvidia/tensorflow:18.12-py3
+#FROM nvcr.io/nvidia/tensorflow:18.12-py3
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 # #
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 # #
@@ -107,7 +108,6 @@ ENV PATH=$CONDA_DIR/bin:$PATH \
     HOME=/home/$NB_USER
 
 ADD fix-permissions /usr/local/bin/fix-permissions
-RUN chmod u+x /usr/local/bin/fix-permissions
 # Create jovyan user with UID=1000 and in the 'users' group
 # and make sure these dirs are writable by the `users` group.
 RUN groupadd wheel -g 11 && \
@@ -120,7 +120,6 @@ RUN groupadd wheel -g 11 && \
     fix-permissions $CONDA_DIR
 
 USER $NB_UID
-RUN chmod u+x /usr/local/bin/fix-permissions
 
 # Setup work directory for backward-compatibility
 RUN mkdir /home/$NB_USER/work && \
