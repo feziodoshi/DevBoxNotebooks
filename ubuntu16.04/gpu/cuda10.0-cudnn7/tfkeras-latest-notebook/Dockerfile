@@ -4,41 +4,36 @@
 # Build Command:
 # > sudo nvidia-docker build -t cocoflow/tensorflow-keras:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/tfkeras-latest-notebook
 
-# FROM nvcr.io/nvidia/tensorflow:18.12-py3
-#
-# MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
-#
-# ARG JUPYTERHUB_VERSION=0.8.0
-# RUN pip3 install --no-cache \
-#     jupyterhub==$JUPYTERHUB_VERSION
-#
-# RUN pip3 install \
-#     jupyterhub==0.7.2 \
-#     'notebook>=5.0,<=6.0'
-#
-# # create a user, since we don't want to run as root
-# RUN useradd -m jovyan
-# ENV HOME=/home/jovyan
-# WORKDIR $HOME
-#
-# COPY notebook_config.py /etc/jupyter/
-# COPY genpass.py .
-# RUN fix-permissions /etc/jupyter/
-#
-# USER jovyan
-#
-# CMD ["jupyterhub-singleuser"]
+FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
-FROM python:3.6
-RUN pip3 install \
-    jupyterhub==0.7.2 \
-    'notebook>=5.0,<=6.0'
+MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
-# create a user, since we don't want to run as root
-RUN useradd -m jovyan
-ENV HOME=/home/jovyan
+USER root
 WORKDIR $HOME
-USER jovyan
 
-RUN echo $HOME
-CMD ["jupyterhub-singleuser"]
+# ==============================================================
+#  Update Pip & Conda
+# ==============================================================
+
+RUN pip install --upgrade pip \
+ && conda update conda
+
+# ==============================================================
+#  Install Tensorflow & Keras
+# ==============================================================
+
+RUN pip install tensorflow-gpu keras
+
+# ==============================================================
+#  Set Cuda Variables
+# ==============================================================
+
+ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
+ENV CUDA_VISIBLE_DEVICES 0,1,2,3
+
+# ==============================================================
+#  set workdir and user for jupyter notebook use
+# ==============================================================
+
+WORKDIR /home/$NB_USER/work/
+USER $NB_USER
