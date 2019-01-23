@@ -11,29 +11,41 @@ FROM tensorflow/tensorflow:nightly-gpu-py3-jupyter
 #FROM ncvr.io/nvidia/tensorflow:18.12-py3
 LABEL maintainer="Colin Conwell <conwell@g.harvard.edu>"
 
+RUN pip3 install \
+    jupyterhub==0.7.2 \
+    'notebook>=5.0,<=6.0'
+
+# create a user, since we don't want to run as root
+RUN useradd -m jovyan
+ENV HOME=/home/jovyan
+WORKDIR $HOME
+USER jovyan
+
+CMD ["jupyterhub-singleuser"]
+
 #USER root
 
-USER root
-
-EXPOSE 8888
-WORKDIR $HOME/work
-
-# Configure container startup
-CMD ["start-notebook.sh"]
-
-# Add local files as late as possible to avoid cache busting
-
-#ADD fix-permissions /usr/local/bin/fix-permissions
-#RUN chmod u+x /usr/local/bin/fix-permissions
-copy fix-permissions /usr/local/bin/
-COPY start.sh /usr/local/bin/
-COPY start-notebook.sh /usr/local/bin/
-COPY start-singleuser.sh /usr/local/bin/
-COPY jupyter_notebook_config.py /etc/jupyter/
-COPY genpass.py .
-#RUN fix-permissions /etc/jupyter/
-
-WORKDIR $HOME/work
+# USER root
+#
+# EXPOSE 8888
+# WORKDIR $HOME/work
+#
+# # Configure container startup
+# CMD ["start-notebook.sh"]
+#
+# # Add local files as late as possible to avoid cache busting
+#
+# #ADD fix-permissions /usr/local/bin/fix-permissions
+# #RUN chmod u+x /usr/local/bin/fix-permissions
+# copy fix-permissions /usr/local/bin/
+# COPY start.sh /usr/local/bin/
+# COPY start-notebook.sh /usr/local/bin/
+# COPY start-singleuser.sh /usr/local/bin/
+# COPY jupyter_notebook_config.py /etc/jupyter/
+# COPY genpass.py .
+# #RUN fix-permissions /etc/jupyter/
+#
+# WORKDIR $HOME/work
 
 # RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 curl ca-certificates && \
 #     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
@@ -61,5 +73,5 @@ WORKDIR $HOME/work
 
 #RUN pip install tensorflow-gpu keras
 
-WORKDIR /home/$NB_USER/work/
-USER $NB_USER
+# WORKDIR /home/$NB_USER/work/
+# USER $NB_USER
