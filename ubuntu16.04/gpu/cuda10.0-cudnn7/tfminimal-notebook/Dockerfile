@@ -23,6 +23,9 @@ ENTRYPOINT ["tini", "-g", "--"]
 CMD ["start-notebook.sh"]
 
 # Add local files as late as possible to avoid cache busting
+
+ADD fix-permissions /usr/local/bin/fix-permissions
+RUN chmod u+x /usr/local/bin/fix-permissions
 copy fix-permissions /usr/local/bin/
 COPY start.sh /usr/local/bin/
 COPY start-notebook.sh /usr/local/bin/
