@@ -24,15 +24,15 @@ CMD ["start-notebook.sh"]
 
 # Add local files as late as possible to avoid cache busting
 
-ADD fix-permissions /usr/local/bin/fix-permissions
-RUN chmod u+x /usr/local/bin/fix-permissions
+#ADD fix-permissions /usr/local/bin/fix-permissions
+#RUN chmod u+x /usr/local/bin/fix-permissions
 copy fix-permissions /usr/local/bin/
 COPY start.sh /usr/local/bin/
 COPY start-notebook.sh /usr/local/bin/
 COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/
 COPY genpass.py .
-RUN fix-permissions /etc/jupyter/
+#RUN fix-permissions /etc/jupyter/
 
 WORKDIR $HOME/work
 
