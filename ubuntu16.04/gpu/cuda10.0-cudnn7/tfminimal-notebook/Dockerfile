@@ -10,7 +10,7 @@ RUN pip3 install \
     jupyterhub==0.7.2 \
     'notebook>=5.0,<=6.0'
 ADD start-singleuser.sh /usr/local/bin/start-singleuser.sh
-RUN chmod +x /start-singleuser.sh
+RUN chmod +x /usr/local/bin/start-singleuser.sh
 
 # create a user, since we don't want to run as root
 RUN useradd -m jovyan
