@@ -21,7 +21,9 @@ ENV HOME=/home/jovyan
 WORKDIR $HOME
 USER jovyan
 
-CMD ["jupyterhub-singleuser"]
+#CMD ["jupyterhub-singleuser"]
+COPY start-singleuser.sh /usr/local/bin/
+CMD ['start-singleuser.sh']
 
 #USER root
 
