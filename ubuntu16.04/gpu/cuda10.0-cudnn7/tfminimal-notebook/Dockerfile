@@ -11,7 +11,26 @@ FROM tensorflow/tensorflow:nightly-gpu-py3-jupyter
 #FROM ncvr.io/nvidia/tensorflow:18.12-py3
 LABEL maintainer="Colin Conwell <conwell@g.harvard.edu>"
 
+#USER root
+
 USER root
+
+EXPOSE 8888
+WORKDIR $HOME/work
+
+# Configure container startup
+ENTRYPOINT ["tini", "-g", "--"]
+CMD ["start-notebook.sh"]
+
+# Add local files as late as possible to avoid cache busting
+COPY start.sh /usr/local/bin/
+COPY start-notebook.sh /usr/local/bin/
+COPY start-singleuser.sh /usr/local/bin/
+COPY jupyter_notebook_config.py /etc/jupyter/
+COPY genpass.py .
+RUN fix-permissions /etc/jupyter/
+
+WORKDIR $HOME/work
 
 # RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 curl ca-certificates && \
 #     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
