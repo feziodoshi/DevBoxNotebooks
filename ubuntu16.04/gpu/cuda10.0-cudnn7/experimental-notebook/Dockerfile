@@ -80,6 +80,12 @@ RUN conda install --quiet --yes \
   && conda clean -tipsy
 
 # ==============================================================
+#  Install Tensorflow-Nightly & Keras
+# ==============================================================
+
+RUN pip install tf-nightly-gpu keras
+
+# ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
 
