@@ -89,6 +89,8 @@ RUN jupyter labextension install @jupyterlab/git && \
 
 RUN git config --global user.name "colinconwell"
 
+RUN apt-get install ssh-client
+
 # ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
