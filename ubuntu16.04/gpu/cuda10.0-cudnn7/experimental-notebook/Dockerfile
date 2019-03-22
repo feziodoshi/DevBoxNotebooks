@@ -94,7 +94,7 @@ RUN apt-get -y update && apt-get install -y openssh-client
 RUN mkdir -p /home/jovyan/.ssh
 RUN ssh-keygen -f /home/jovyan/.ssh/id_rsa -t rsa -N ''
 RUN export GIT_SSH_COMMAND="ssh -i /home/jovyan/.ssh/id_rsa"
-RUN ssh-keyscan github.com >> home/jovyan/.ssh/known_hosts
+RUN ssh-keyscan github.com >> /home/jovyan/.ssh/known_hosts
 #RUN eval `ssh-agent -s` && ssh-add /home/jovyan/.ssh/id_rsa
 
 # ==============================================================
