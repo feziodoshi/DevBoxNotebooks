@@ -80,10 +80,12 @@ RUN conda install --quiet --yes \
   && conda clean -tipsy
 
 # ==============================================================
-#  Install Tensorflow-Nightly & Keras
+#  Install Jupyterlab-Git
 # ==============================================================
 
-RUN pip install tf-nightly-gpu keras
+RUN jupyter labextension install @jupyterlab/git && \
+pip install jupyterlab-git && \
+jupyter serverextension enable --py jupyterlab_git
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
