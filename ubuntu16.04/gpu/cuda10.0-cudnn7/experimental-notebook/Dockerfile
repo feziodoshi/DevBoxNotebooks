@@ -87,10 +87,12 @@ RUN jupyter labextension install @jupyterlab/git && \
   pip install jupyterlab-git && \
   jupyter serverextension enable --py jupyterlab_git
 
-RUN git config --global user.name "colinconwell"
+RUN git config --global user.name "colinconwell" && \
+  git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
 RUN apt-get -y update && apt-get install -y openssh-client
 RUN mkdir -p /home/jovyan/.ssh
+RUN ssh-keygen -t rsa
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
