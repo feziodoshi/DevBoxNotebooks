@@ -88,13 +88,14 @@ RUN jupyter labextension install @jupyterlab/git && \
   jupyter serverextension enable --py jupyterlab_git
 
 RUN git config --global user.name "colinconwell" && \
-  git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+  git config -- global user.email "colinconwell@gmail.com"
+  #git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
-RUN apt-get -y update && apt-get install -y openssh-client
-RUN mkdir -p /home/jovyan/.ssh
-RUN ssh-keygen -f /home/jovyan/.ssh/id_rsa -t rsa -N ''
-RUN export GIT_SSH_COMMAND="ssh -i /home/jovyan/.ssh/id_rsa"
-RUN ssh-keyscan github.com >> /home/jovyan/.ssh/known_hosts
+#RUN apt-get -y update && apt-get install -y openssh-client
+#RUN mkdir -p /home/jovyan/.ssh
+#RUN ssh-keygen -f /home/jovyan/.ssh/id_rsa -t rsa -N ''
+#RUN export GIT_SSH_COMMAND="ssh -i /home/jovyan/.ssh/id_rsa"
+#RUN ssh-keyscan github.com >> /home/jovyan/.ssh/known_hosts
 #RUN eval `ssh-agent -s` && ssh-add /home/jovyan/.ssh/id_rsa
 
 # ==============================================================
