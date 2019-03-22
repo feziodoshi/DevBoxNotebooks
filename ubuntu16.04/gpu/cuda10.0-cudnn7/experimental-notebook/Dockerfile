@@ -83,13 +83,15 @@ RUN conda install --quiet --yes \
 #  Install Jupyterlab-Git
 # ==============================================================
 
-RUN jupyter labextension install @jupyterlab/git && \
-  pip install jupyterlab-git && \
+RUN apt-get -y update && apt-get install -y openssh-client
+
+RUN jupyter labextension install dask-labextension && \
+  jupyter labextension install @jupyterlab/git && pip install jupyterlab-git && \
   jupyter serverextension enable --py jupyterlab_git
 
-RUN git config --global user.name "colinconwell" && \
-  git config --global user.email "colinconwell@gmail.com"
-  #git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+# RUN git config --global user.name "colinconwell" && \
+#   git config --global user.email "colinconwell@gmail.com"
+#   git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
 #RUN apt-get -y update && apt-get install -y openssh-client
 #RUN mkdir -p /home/jovyan/.ssh
