@@ -84,8 +84,10 @@ RUN conda install --quiet --yes \
 # ==============================================================
 
 RUN jupyter labextension install @jupyterlab/git && \
-pip install jupyterlab-git && \
-jupyter serverextension enable --py jupyterlab_git
+  pip install jupyterlab-git && \
+  jupyter serverextension enable --py jupyterlab_git
+
+RUN git config --global user.name "colinconwell"
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
