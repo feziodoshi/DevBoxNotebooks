@@ -93,6 +93,7 @@ RUN git config --global user.name "colinconwell" && \
 RUN apt-get -y update && apt-get install -y openssh-client
 RUN mkdir -p /home/jovyan/.ssh
 RUN ssh-keygen -f /home/jovyan/.ssh/id_rsa -t rsa -N ''
+RUN export GIT_SSH_COMMAND="ssh -i /home/jovyan/.ssh/id_rsa"
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
