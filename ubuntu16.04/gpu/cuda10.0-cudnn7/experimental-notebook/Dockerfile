@@ -65,6 +65,12 @@ RUN conda install --quiet --yes \
   'r-sparklyr' \
   'r-htmlwidgets' \
   'r-hexbin' \
+  'r-ggfortify' \
+  'r-bootstrap' \
+  'r-data.table' \
+  'r-lmerTest' \
+  'r-glmnet' \
+  'r-psych'
   && conda clean -tipsy
 
 # ==============================================================
@@ -118,8 +124,8 @@ RUN apt-get install -y software-properties-common \
 #  Fixing permissions for R installations
 # ==============================================================
 
-RUN chmod 600 /opt/conda/lib/R
-RUN adduser $NB_USER staff
+#RUN chmod 600 /opt/conda/lib/R
+#RUN adduser $NB_USER staff
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
