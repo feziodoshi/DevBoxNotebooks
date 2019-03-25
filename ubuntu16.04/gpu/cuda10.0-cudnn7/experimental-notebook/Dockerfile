@@ -71,7 +71,7 @@ RUN conda install --quiet --yes \
   'r-corrplot' \
   'r-lmerTest' \
   'r-glmnet' \
-  'r-Rmisc' \
+  'r-lattice' \
   'r-pROC' \
   'r-psych' \
   && conda clean -tipsy
