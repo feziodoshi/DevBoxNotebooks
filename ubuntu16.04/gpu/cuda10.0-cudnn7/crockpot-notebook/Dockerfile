@@ -12,7 +12,7 @@ USER root
 WORKDIR $HOME
 
 # ==============================================================
-#  Update Pip & Conda
+#  Updates & Upgrades
 # ==============================================================
 
 RUN pip install --upgrade pip \
@@ -27,6 +27,8 @@ RUN pip install tensorflow-gpu keras
 # ==============================================================
 #  Install PyTorch
 # ==============================================================
+
+RUN pip install --upgrade numpy
 
 RUN conda install -c conda-forge mock && conda install -y mkl -c intel \
   && conda install pytorch torchvision cuda100 -c pytorch \
