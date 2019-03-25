@@ -78,7 +78,8 @@ RUN jupyter labextension install @jupyterlab/git && pip install jupyterlab-git \
 
 #Installing Git LFS
 RUN apt-get install -y software-properties-common \
-  && add-apt-repository ppa:git-core/ppa && apt-get update
+  && add-apt-repository ppa:git-core/ppa \
+  && apt-get update
 
 # RUN build_deps="curl" && apt-get update && \
 #       apt-get install -y --no-install-recommends ${build_deps} ca-certificates && \
