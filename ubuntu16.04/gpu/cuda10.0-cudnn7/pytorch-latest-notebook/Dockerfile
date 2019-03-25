@@ -42,7 +42,7 @@ RUN jupyter labextension install @jupyterlab/git && pip install jupyterlab-git &
 ENV CUDA_​DEVICE_​ORDER PCI_BUS_ID
 ENV CUDA_VISIBLE_DEVICES 0,1,2,3
 
-RUN pip install numpy --upgrade
+RUN pip install opencv-contrib-python
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
