@@ -115,6 +115,12 @@ RUN apt-get install -y software-properties-common \
 #   && pip install 'gym[box2d]'
 
 # ==============================================================
+#  Fixing permissions for R installations
+# ==============================================================
+
+usermod -a -G staff $NB_USER
+
+# ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
 
