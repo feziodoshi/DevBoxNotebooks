@@ -68,8 +68,11 @@ RUN conda install --quiet --yes \
   'r-ggfortify' \
   'r-bootstrap' \
   'r-data.table' \
+  'r-corrplot' \
   'r-lmerTest' \
   'r-glmnet' \
+  'r-Rmisc' \
+  'r-pROC' \
   'r-psych' \
   && conda clean -tipsy
 
