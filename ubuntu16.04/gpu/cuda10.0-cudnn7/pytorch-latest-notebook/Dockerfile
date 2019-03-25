@@ -32,8 +32,7 @@ RUN conda install -c conda-forge mock && conda install -y mkl -c intel \
 
 RUN apt-get -y update && apt-get install -y openssh-client
 
-RUN jupyter labextension install dask-labextension && \
-  jupyter labextension install @jupyterlab/git && pip install jupyterlab-git && \
+RUN jupyter labextension install @jupyterlab/git && pip install jupyterlab-git && \
   jupyter serverextension enable --py jupyterlab_git
 
 # ==============================================================

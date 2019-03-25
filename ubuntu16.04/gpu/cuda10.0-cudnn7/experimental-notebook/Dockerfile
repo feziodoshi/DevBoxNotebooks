@@ -24,6 +24,7 @@ RUN jupyter labextension install @jupyterlab/plotly-extension \
  && jupyter labextension install jupyterlab-drawio \
  && jupyter labextension install jupyterlab-scales \
  && jupyter labextension install @jupyterlab/celltags
+ #&& jupyter labextension install dask-labextension \
  #&& jupyter labextension install jupyterlab_voyager
 
 RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
@@ -72,9 +73,16 @@ RUN conda install --quiet --yes \
 
 RUN apt-get -y update && apt-get install -y openssh-client
 
-RUN jupyter labextension install dask-labextension && \
-  jupyter labextension install @jupyterlab/git && pip install jupyterlab-git && \
-  jupyter serverextension enable --py jupyterlab_git
+RUN jupyter labextension install @jupyterlab/git && pip install jupyterlab-git \
+  && jupyter serverextension enable --py jupyterlab_git
+
+#Installing Git LFS
+RUN apt-get install software-properties-common \
+  && add-apt-repository ppa:git-core/ppa \
+  && apt-get update
+
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash \
+  && apt-get install git-lfs
 
 # RUN git config --global user.name "colinconwell" && \
 #   git config --global user.email "colinconwell@gmail.com"
