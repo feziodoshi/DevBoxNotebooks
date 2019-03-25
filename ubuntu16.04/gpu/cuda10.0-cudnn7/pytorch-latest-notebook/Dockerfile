@@ -22,6 +22,8 @@ RUN pip install --upgrade pip \
 #  Install PyTorch
 # ==============================================================
 
+RUN pip install --upgrade numpy
+
 RUN conda install -c conda-forge mock && conda install -y mkl -c intel \
   && conda install pytorch torchvision cuda100 -c pytorch \
   && conda clean -tipsy
