@@ -118,7 +118,7 @@ RUN apt-get install -y software-properties-common \
 #  Fixing permissions for R installations
 # ==============================================================
 
-usermod -a -G staff $NB_USER
+RUN usermod -a -G staff $NB_USER
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
