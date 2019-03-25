@@ -77,12 +77,12 @@ RUN jupyter labextension install @jupyterlab/git && pip install jupyterlab-git \
   && jupyter serverextension enable --py jupyterlab_git
 
 #Installing Git LFS
-RUN apt-get install software-properties-common \
-  && add-apt-repository ppa:git-core/ppa \
-  && apt-get update
-
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash \
-  && apt-get install git-lfs
+# RUN apt-get install -y software-properties-common \
+#   && add-apt-repository ppa:git-core/ppa \
+#   && apt-get update
+#
+# RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash \
+#   && apt-get install -y git-lfs
 
 # RUN git config --global user.name "colinconwell" && \
 #   git config --global user.email "colinconwell@gmail.com"
