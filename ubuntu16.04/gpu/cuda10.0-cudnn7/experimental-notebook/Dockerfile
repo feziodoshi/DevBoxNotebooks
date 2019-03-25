@@ -70,7 +70,7 @@ RUN conda install --quiet --yes \
   'r-data.table' \
   'r-lmerTest' \
   'r-glmnet' \
-  'r-psych'
+  'r-psych' \
   && conda clean -tipsy
 
 # ==============================================================
