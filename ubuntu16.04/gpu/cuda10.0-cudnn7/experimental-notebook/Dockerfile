@@ -119,7 +119,7 @@ RUN apt-get install -y software-properties-common \
 # ==============================================================
 
 RUN chmod 777 /opt/conda/lib/R/library
-RUN usermod --append --gid staff $NB_USER
+RUN usermod -a -G staff $NB_USER
 RUN adduser $NB_USER staff
 
 # ==============================================================
