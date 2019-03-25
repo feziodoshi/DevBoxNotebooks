@@ -118,7 +118,7 @@ RUN apt-get install -y software-properties-common \
 #  Fixing permissions for R installations
 # ==============================================================
 
-RUN usermod -a -G staff $NB_USER
+RUN chmod o+w /opt/conda/lib/R/library
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
