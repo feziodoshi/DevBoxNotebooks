@@ -118,8 +118,7 @@ RUN apt-get install -y software-properties-common \
 #  Fixing permissions for R installations
 # ==============================================================
 
-RUN chmod 777 /opt/conda/lib/R/library
-RUN usermod -a -G staff $NB_USER
+RUN chmod 600 /opt/conda/lib/R
 RUN adduser $NB_USER staff
 
 # ==============================================================
