@@ -11,83 +11,83 @@ MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 USER root
 WORKDIR $HOME
 
-# ==============================================================
-#  Install Jupyterlab Extensions
-# ==============================================================
-
-RUN conda install -c conda-forge widgetsnbextension \
- && conda install -c conda-forge jupyter_contrib_nbextensions \
- && conda install -c conda-forge jupyter_nbextensions_configurator
-
-RUN jupyter labextension install @jupyterlab/plotly-extension \
- && jupyter labextension install @mflevine/jupyterlab_html \
- && jupyter labextension install jupyterlab-drawio \
- && jupyter labextension install jupyterlab-scales \
- #&& jupyter labextension install dask-labextension \
- #&& jupyter labextension install jupyterlab_voyager
-
-RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
- && cd jupyterlab-variableInspector && npm install \
- && npm run build && jupyter labextension install .
-
-RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
+# # ==============================================================
+# #  Install Jupyterlab Extensions
+# # ==============================================================
 #
-# ==============================================================
-#  Install R Kernel
-# ==============================================================
-
-RUN apt-get update && \
-  apt-get install -y --no-install-recommends \
-  fonts-dejavu \
-  tzdata \
-  gfortran \
-  gcc && \
-  rm -rf /var/lib/apt/lists/*
-
-# R packages
-RUN conda install --quiet --yes \
-  'r-base' \
-  'r-irkernel' \
-  'r-plyr' \
-  'r-devtools' \
-  'r-tidyverse' \
-  'r-shiny' \
-  'r-rmarkdown' \
-  'r-forecast' \
-  'r-rsqlite' \
-  'r-reshape2' \
-  'r-caret' \
-  'r-rcurl' \
-  'r-crayon' \
-  'r-randomforest' \
-  'r-htmltools' \
-  'r-sparklyr' \
-  'r-htmlwidgets' \
-  'r-hexbin' \
-  'r-ggfortify' \
-  'r-bootstrap' \
-  'r-data.table' \
-  'r-corrplot' \
-  'r-lmerTest' \
-  'r-glmnet' \
-  'r-lattice' \
-  'r-pROC' \
-  'r-psych' \
-  && conda clean -tipsy
-
-# ==============================================================
-#  Install Jupyterlab-Git
-# ==============================================================
-
-RUN apt-get -y update && apt-get install -y openssh-client
-
-RUN jupyter labextension install @jupyterlab/git && pip install jupyterlab-git \
-  && jupyter serverextension enable --py jupyterlab_git
-
-#Installing Git LFS
-RUN apt-get install -y software-properties-common \
-  && add-apt-repository ppa:git-core/ppa \
-  && apt-get update
+# RUN conda install -c conda-forge widgetsnbextension \
+#  && conda install -c conda-forge jupyter_contrib_nbextensions \
+#  && conda install -c conda-forge jupyter_nbextensions_configurator
+#
+# RUN jupyter labextension install @jupyterlab/plotly-extension \
+#  && jupyter labextension install @mflevine/jupyterlab_html \
+#  && jupyter labextension install jupyterlab-drawio \
+#  && jupyter labextension install jupyterlab-scales
+#  #&& jupyter labextension install dask-labextension \
+#  #&& jupyter labextension install jupyterlab_voyager
+#
+# RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
+#  && cd jupyterlab-variableInspector && npm install \
+#  && npm run build && jupyter labextension install .
+#
+# RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
+# #
+# # ==============================================================
+# #  Install R Kernel
+# # ==============================================================
+#
+# RUN apt-get update && \
+#   apt-get install -y --no-install-recommends \
+#   fonts-dejavu \
+#   tzdata \
+#   gfortran \
+#   gcc && \
+#   rm -rf /var/lib/apt/lists/*
+#
+# # R packages
+# RUN conda install --quiet --yes \
+#   'r-base' \
+#   'r-irkernel' \
+#   'r-plyr' \
+#   'r-devtools' \
+#   'r-tidyverse' \
+#   'r-shiny' \
+#   'r-rmarkdown' \
+#   'r-forecast' \
+#   'r-rsqlite' \
+#   'r-reshape2' \
+#   'r-caret' \
+#   'r-rcurl' \
+#   'r-crayon' \
+#   'r-randomforest' \
+#   'r-htmltools' \
+#   'r-sparklyr' \
+#   'r-htmlwidgets' \
+#   'r-hexbin' \
+#   'r-ggfortify' \
+#   'r-bootstrap' \
+#   'r-data.table' \
+#   'r-corrplot' \
+#   'r-lmerTest' \
+#   'r-glmnet' \
+#   'r-lattice' \
+#   'r-pROC' \
+#   'r-psych' \
+#   && conda clean -tipsy
+#
+# # ==============================================================
+# #  Install Jupyterlab-Git
+# # ==============================================================
+#
+# RUN apt-get -y update && apt-get install -y openssh-client
+#
+# RUN jupyter labextension install @jupyterlab/git && pip install jupyterlab-git \
+#   && jupyter serverextension enable --py jupyterlab_git
+#
+# #Installing Git LFS
+# RUN apt-get install -y software-properties-common \
+#   && add-apt-repository ppa:git-core/ppa \
+#   && apt-get update
 
 # RUN build_deps="curl" && apt-get update && \
 #       apt-get install -y --no-install-recommends ${build_deps} ca-certificates && \
