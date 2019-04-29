@@ -23,7 +23,6 @@ RUN jupyter labextension install @jupyterlab/plotly-extension \
  && jupyter labextension install @mflevine/jupyterlab_html \
  && jupyter labextension install jupyterlab-drawio \
  && jupyter labextension install jupyterlab-scales \
- && jupyter labextension install @jupyterlab/celltags
  #&& jupyter labextension install dask-labextension \
  #&& jupyter labextension install jupyterlab_voyager
 
