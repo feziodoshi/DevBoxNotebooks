@@ -126,9 +126,10 @@ RUN apt-get update && \
 	apt-get -y autoremove && \
 	rm -rf /var/lib/apt/lists/*
 
-ENV BLENDER_MAJOR 2.79
-ENV BLENDER_VERSION 2.79b
-ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender$BLENDER_MAJOR/blender-$BLENDER_VERSION-linux-glibc219-x86_64.tar.bz2
+#ENV BLENDER_MAJOR 2.79
+#ENV BLENDER_VERSION 2.79b
+#ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender$BLENDER_MAJOR/blender-$BLENDER_VERSION-linux-glibc219-x86_64.tar.bz2
+ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
 
 RUN mkdir /usr/local/blender && \
 	curl -SL "$BLENDER_BZ2_URL" -o blender.tar.bz2 && \
@@ -137,9 +138,9 @@ RUN mkdir /usr/local/blender && \
 
 ENV PATH /usr/local/blender:$PATH
 
-RUN cd /usr/local/blender/$BLENDER_MAJOR/python/bin & ./python -m ensurepip & /.python -m pip install pandas scipy
-# RUN ./python -m ensurepip
-# RUN ./python -m pip install pandas scipy
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip & \
+  /usr/local/blender/2.79/python/bin/python3.5m -m scipy
+
 
 # ==============================================================
 #  INSTALL OPENAI-GYM
