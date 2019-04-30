@@ -138,9 +138,9 @@ RUN mkdir /usr/local/blender && \
 
 ENV PATH /usr/local/blender:$PATH
 
-WORKDIR /usr/local/blender/2.79/python/bin/
-RUN python3.5m -m ensurepip && python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
-  --upgrade numpy scipy pandas
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
+  --upgrade pip numpy scipy pandas
 #RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install scipy
 #RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' --upgrade numpy scipy pandas
 
