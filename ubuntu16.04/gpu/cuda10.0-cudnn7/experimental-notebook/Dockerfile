@@ -75,85 +75,35 @@ RUN conda install --quiet --yes \
   'r-psych' \
   && conda clean -tipsy
 
-# # ==============================================================
-# #  Install Jupyterlab-Git
-# # ==============================================================
-
-# RUN apt-get -y update && apt-get install -y openssh-client
-
-# RUN jupyter labextension install @jupyterlab/git && pip install jupyterlab-git \
-#   && jupyter serverextension enable --py jupyterlab_git
-
-# #Installing Git LFS
-# RUN apt-get install -y software-properties-common \
-#   && add-apt-repository ppa:git-core/ppa \
-#   && apt-get update
-
-# RUN build_deps="curl" && apt-get update && \
-#       apt-get install -y --no-install-recommends ${build_deps} ca-certificates && \
-#       curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
-#       apt-get install -y --no-install-recommends git-lfs && \
-#       git lfs install && apt-get purge -y --auto-remove ${build_deps} && \
-#       rm -r /var/lib/apt/lists/*
-
-# RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
-# RUN apt-get update && apt-get install git-lfs
-
-# RUN git config --global user.name "colinconwell" && \
-#   git config --global user.email "colinconwell@gmail.com"
-#   git config --global --add url."git@github.com:".insteadOf "https://github.com/"
-
-# RUN apt-get -y update && apt-get install -y openssh-client
-# RUN mkdir -p /home/jovyan/.ssh
-# RUN ssh-keygen -f /home/jovyan/.ssh/id_rsa -t rsa -N ''
-# RUN export GIT_SSH_COMMAND="ssh -i /home/jovyan/.ssh/id_rsa"
-# RUN ssh-keyscan github.com >> /home/jovyan/.ssh/known_hosts
-# RUN eval `ssh-agent -s` && ssh-add /home/jovyan/.ssh/id_rsa
-
-# # ==============================================================
-# #  INSTALL BLENDER
-# # ==============================================================
-
-# RUN apt-get update && \
-# 	apt-get install -y \
-# 		curl \
-# 		bzip2 \
-# 		libfreetype6 \
-# 		libgl1-mesa-dev \
-# 		libglu1-mesa \
-# 		libxi6 \
-# 		libxrender1 && \
-# 	apt-get -y autoremove && \
-# 	rm -rf /var/lib/apt/lists/*
-
-# #ENV BLENDER_MAJOR 2.79
-# #ENV BLENDER_VERSION 2.79b
-# #ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender$BLENDER_MAJOR/blender-$BLENDER_VERSION-linux-glibc219-x86_64.tar.bz2
-# ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
-
-# RUN mkdir /usr/local/blender && \
-# 	curl -SL "$BLENDER_BZ2_URL" -o blender.tar.bz2 && \
-# 	tar -jxvf blender.tar.bz2 -C /usr/local/blender --strip-components=1 && \
-# 	rm blender.tar.bz2
-
-# ENV PATH /usr/local/blender:$PATH
-
-# RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
-# RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
-#   --upgrade pip numpy scipy pandas
-
-
 # ==============================================================
-#  INSTALL OPENAI-GYM
+#  INSTALL BLENDER
 # ==============================================================
 
-# RUN apt-get -y update && \
-#   apt-get install -y python-pyglet python3-opengl zlib1g-dev \
-#   libjpeg-dev patchelf cmake swig libboost-all-dev \
-#   libsdl2-dev libosmesa6-dev xvfb ffmpeg
-# RUN pip install --upgrade gym \
-#   && pip install 'gym[atari]' \
-#   && pip install 'gym[box2d]'
+RUN apt-get update && \
+	apt-get install -y \
+		curl \
+		bzip2 \
+		libfreetype6 \
+		libgl1-mesa-dev \
+		libglu1-mesa \
+		libxi6 \
+		libxrender1 && \
+	apt-get -y autoremove && \
+	rm -rf /var/lib/apt/lists/*
+
+ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
+
+RUN mkdir /usr/local/blender && \
+	curl -SL "$BLENDER_BZ2_URL" -o blender.tar.bz2 && \
+	tar -jxvf blender.tar.bz2 -C /usr/local/blender --strip-components=1 && \
+	rm blender.tar.bz2
+
+ENV PATH /usr/local/blender:$PATH
+ENV BLENDER_MODULES /usr/local/blender/2.79/python/lib/python3.5/site-packages/
+
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='$BLENDER_MODULES' \
+  --upgrade pip numpy scipy pandas
 
 # ==============================================================
 #  Fixing permissions for R installations
