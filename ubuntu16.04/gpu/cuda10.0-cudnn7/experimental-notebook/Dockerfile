@@ -104,7 +104,7 @@ ENV PATH /usr/local/blender:$PATH
 ENV BLENDER_MODULES /usr/local/blender/2.79/python/lib/python3.5/site-packages/
 
 RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
-RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='$BLENDER_MODULES' \
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
   --upgrade pip numpy scipy pandas
 
 
