@@ -88,6 +88,7 @@ RUN apt-get update && \
 		libglu1-mesa \
 		libxi6 \
 		libxrender1 && \
+		apt install --reinstall ca-certificates && \
 	apt-get -y autoremove && \
 	rm -rf /var/lib/apt/lists/*
 
