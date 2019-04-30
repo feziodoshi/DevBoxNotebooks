@@ -91,6 +91,9 @@ RUN apt-get update && \
 	apt-get -y autoremove && \
 	rm -rf /var/lib/apt/lists/*
 
+#ENV BLENDER_MAJOR 2.79
+#ENV BLENDER_VERSION 2.79b
+#ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender$BLENDER_MAJOR/blender-$BLENDER_VERSION-linux-glibc219-x86_64.tar.bz2
 ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
 
 RUN mkdir /usr/local/blender && \
@@ -99,11 +102,23 @@ RUN mkdir /usr/local/blender && \
 	rm blender.tar.bz2
 
 ENV PATH /usr/local/blender:$PATH
-ENV BLENDER_MODULES /usr/local/blender/2.79/python/lib/python3.5/site-packages/
 
 RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
-RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='$BLENDER_MODULES' \
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
   --upgrade pip numpy scipy pandas
+
+
+# ==============================================================
+#  INSTALL OPENAI-GYM
+# ==============================================================
+
+# RUN apt-get -y update && \
+#   apt-get install -y python-pyglet python3-opengl zlib1g-dev \
+#   libjpeg-dev patchelf cmake swig libboost-all-dev \
+#   libsdl2-dev libosmesa6-dev xvfb ffmpeg
+# RUN pip install --upgrade gym \
+#   && pip install 'gym[atari]' \
+#   && pip install 'gym[box2d]'
 
 # ==============================================================
 #  Fixing permissions for R installations
