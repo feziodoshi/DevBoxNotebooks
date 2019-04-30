@@ -32,48 +32,48 @@ RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
 RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
 
 
-# # ==============================================================
-# #  Install R Kernel
-# # ==============================================================
+# ==============================================================
+#  Install R Kernel
+# ==============================================================
 
-# RUN apt-get update && \
-#   apt-get install -y --no-install-recommends \
-#   fonts-dejavu \
-#   tzdata \
-#   gfortran \
-#   gcc && \
-#   rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
+  fonts-dejavu \
+  tzdata \
+  gfortran \
+  gcc && \
+  rm -rf /var/lib/apt/lists/*
 
-# # R packages
-# RUN conda install --quiet --yes \
-#   'r-base' \
-#   'r-irkernel' \
-#   'r-plyr' \
-#   'r-devtools' \
-#   'r-tidyverse' \
-#   'r-shiny' \
-#   'r-rmarkdown' \
-#   'r-forecast' \
-#   'r-rsqlite' \
-#   'r-reshape2' \
-#   'r-caret' \
-#   'r-rcurl' \
-#   'r-crayon' \
-#   'r-randomforest' \
-#   'r-htmltools' \
-#   'r-sparklyr' \
-#   'r-htmlwidgets' \
-#   'r-hexbin' \
-#   'r-ggfortify' \
-#   'r-bootstrap' \
-#   'r-data.table' \
-#   'r-corrplot' \
-#   'r-lmerTest' \
-#   'r-glmnet' \
-#   'r-lattice' \
-#   'r-pROC' \
-#   'r-psych' \
-#   && conda clean -tipsy
+# R packages
+RUN conda install --quiet --yes \
+  'r-base' \
+  'r-irkernel' \
+  'r-plyr' \
+  'r-devtools' \
+  'r-tidyverse' \
+  'r-shiny' \
+  'r-rmarkdown' \
+  'r-forecast' \
+  'r-rsqlite' \
+  'r-reshape2' \
+  'r-caret' \
+  'r-rcurl' \
+  'r-crayon' \
+  'r-randomforest' \
+  'r-htmltools' \
+  'r-sparklyr' \
+  'r-htmlwidgets' \
+  'r-hexbin' \
+  'r-ggfortify' \
+  'r-bootstrap' \
+  'r-data.table' \
+  'r-corrplot' \
+  'r-lmerTest' \
+  'r-glmnet' \
+  'r-lattice' \
+  'r-pROC' \
+  'r-psych' \
+  && conda clean -tipsy
 
 # # ==============================================================
 # #  Install Jupyterlab-Git
