@@ -138,8 +138,8 @@ RUN mkdir /usr/local/blender && \
 
 ENV PATH /usr/local/blender:$PATH
 
-RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip & \
-  /usr/local/blender/2.79/python/bin/python3.5m -m pip install scipy
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install scipy
 
 
 # ==============================================================
