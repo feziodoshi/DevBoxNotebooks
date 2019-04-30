@@ -88,9 +88,10 @@ RUN apt-get update && \
 		libglu1-mesa \
 		libxi6 \
 		libxrender1 && \
-		apt install --reinstall ca-certificates && \
 	apt-get -y autoremove && \
 	rm -rf /var/lib/apt/lists/*
+
+RUN export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 ENV BLENDER_MAJOR 2.79
 ENV BLENDER_VERSION 2.79b
