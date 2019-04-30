@@ -137,6 +137,10 @@ RUN mkdir /usr/local/blender && \
 
 ENV PATH /usr/local/blender:$PATH
 
+WORKDIR /usr/local/blender/$BLENDER_MAJOR/python/bin
+RUN ./python -m ensurepip
+RUN ./python -m pip install pandas scipy
+
 # ==============================================================
 #  INSTALL OPENAI-GYM
 # ==============================================================
