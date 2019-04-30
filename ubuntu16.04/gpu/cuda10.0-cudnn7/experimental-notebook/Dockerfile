@@ -93,10 +93,7 @@ RUN apt-get update && \
 
 RUN cp /etc/ssl/certs/ca-certificates.crt /opt/conda/ssl/cacert.pem
 
-ENV BLENDER_MAJOR 2.79
-ENV BLENDER_VERSION 2.79b
-ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender$BLENDER_MAJOR/blender-$BLENDER_VERSION-linux-glibc219-x86_64.tar.bz2
-#ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
+ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
 
 RUN mkdir /usr/local/blender && \
 	curl -SL "$BLENDER_BZ2_URL" -o blender.tar.bz2 && \
@@ -104,9 +101,10 @@ RUN mkdir /usr/local/blender && \
 	rm blender.tar.bz2
 
 ENV PATH /usr/local/blender:$PATH
+ENV BLENDER_MODULES /usr/local/blender/2.79/python/lib/python3.5/site-packages/
 
 RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
-RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='$BLENDER_MODULES' \
   --upgrade pip numpy scipy pandas
 
 
