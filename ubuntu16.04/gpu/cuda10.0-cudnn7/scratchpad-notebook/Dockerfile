@@ -24,8 +24,8 @@ RUN pip install --upgrade pip \
 
 RUN git clone --branch tutorial https://github.com/CSAILVision/gandissect.git
 
-RUN cd gandissect && script/setup_env.sh && script/make_dirs.sh \
-  && source activate netd && pip install -v -e .
+RUN cd gandissect && script/setup_env.sh && script/make_dirs.sh
+RUN source activate netd && pip install -v -e .
 
 # ==============================================================
 #  set workdir and user for jupyter notebook use
