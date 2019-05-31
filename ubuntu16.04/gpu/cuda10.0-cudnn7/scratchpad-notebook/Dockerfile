@@ -32,8 +32,7 @@ RUN wget https://github.com/ninja-build/ninja/releases/download/v1.8.2/ninja-lin
   && unzip ninja-linux.zip -d /usr/local/bin/ \
   && update-alternatives --install /usr/bin/ninja ninja /usr/local/bin/ninja 1 --force 
 
-RUN conda install h5py
-RUN pip install moviepy
+RUN pip install h5py moviepy
 
 
 # ==============================================================
