@@ -28,6 +28,14 @@ RUN git clone --branch tutorial https://github.com/CSAILVision/gandissect.git
 #RUN source activate netd && pip install -v -e .
 RUN cd gandissect && pip install -v -e .
 
+RUN wget https://github.com/ninja-build/ninja/releases/download/v1.8.2/ninja-linux.zip \
+  && unzip ninja-linux.zip -d /usr/local/bin/ \
+  && update-alternatives --install /usr/bin/ninja ninja /usr/local/bin/ninja 1 --force 
+
+RUN conda install h5py pandas
+RUN pip install tqdm moviepy
+
+
 # ==============================================================
 #  set workdir and user for jupyter notebook use
 # ==============================================================
