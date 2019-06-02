@@ -91,9 +91,9 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-# RUN conda install -c conda-forge widgetsnbextension \
-#  && conda install -c conda-forge jupyter_contrib_nbextensions \
-#  && conda install -c conda-forge jupyter_nbextensions_configurator
+RUN conda install -c conda-forge widgetsnbextension \
+ && conda install -c conda-forge jupyter_contrib_nbextensions \
+ && conda install -c conda-forge jupyter_nbextensions_configurator
 
 # RUN jupyter labextension install @jupyterlab/plotly-extension \
 #  && jupyter labextension install @mflevine/jupyterlab_html \
