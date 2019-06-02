@@ -12,27 +12,6 @@ USER root
 WORKDIR $HOME
 
 # ==============================================================
-#  Install Jupyterlab Extensions
-# ==============================================================
-
-RUN conda install -c conda-forge widgetsnbextension \
- && conda install -c conda-forge jupyter_contrib_nbextensions \
- && conda install -c conda-forge jupyter_nbextensions_configurator
-
-RUN jupyter labextension install @jupyterlab/plotly-extension \
- && jupyter labextension install @mflevine/jupyterlab_html \
- && jupyter labextension install jupyterlab-drawio \
- && jupyter labextension install jupyterlab-scales 
- #&& jupyter labextension install jupyterlab_voyager
-
-RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
- && cd jupyterlab-variableInspector && npm install \
- && npm run build && jupyter labextension install .
-
-RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
-
-
-# ==============================================================
 #  Install R Kernel
 # ==============================================================
 
@@ -106,6 +85,27 @@ ENV BLENDER_MODULES /usr/local/blender/2.79/python/lib/python3.5/site-packages/
 RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
 RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
   --upgrade pip numpy scipy pandas
+
+
+# ==============================================================
+#  Install Jupyterlab Extensions
+# ==============================================================
+
+# RUN conda install -c conda-forge widgetsnbextension \
+#  && conda install -c conda-forge jupyter_contrib_nbextensions \
+#  && conda install -c conda-forge jupyter_nbextensions_configurator
+
+# RUN jupyter labextension install @jupyterlab/plotly-extension \
+#  && jupyter labextension install @mflevine/jupyterlab_html \
+#  && jupyter labextension install jupyterlab-drawio \
+#  && jupyter labextension install jupyterlab-scales 
+#  #&& jupyter labextension install jupyterlab_voyager
+
+# RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
+#  && cd jupyterlab-variableInspector && npm install \
+#  && npm run build && jupyter labextension install .
+
+# RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
 
 
 # ==============================================================
