@@ -101,11 +101,11 @@ RUN jupyter labextension install @jupyterlab/plotly-extension \
  && jupyter labextension install jupyterlab-scales 
  #&& jupyter labextension install jupyterlab_voyager
 
-RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
- && cd jupyterlab-variableInspector && npm install \
- && npm run build && jupyter labextension install .
+# RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
+#  && cd jupyterlab-variableInspector && npm install \
+#  && npm run build && jupyter labextension install .
 
-# RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
+RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
 
 
 # ==============================================================
