@@ -95,11 +95,11 @@ RUN conda install -c conda-forge widgetsnbextension \
  && conda install -c conda-forge jupyter_contrib_nbextensions \
  && conda install -c conda-forge jupyter_nbextensions_configurator
 
-# RUN jupyter labextension install @jupyterlab/plotly-extension \
-#  && jupyter labextension install @mflevine/jupyterlab_html \
-#  && jupyter labextension install jupyterlab-drawio \
-#  && jupyter labextension install jupyterlab-scales 
-#  #&& jupyter labextension install jupyterlab_voyager
+RUN jupyter labextension install @jupyterlab/plotly-extension \
+ && jupyter labextension install @mflevine/jupyterlab_html \
+ && jupyter labextension install jupyterlab-drawio \
+ && jupyter labextension install jupyterlab-scales 
+ #&& jupyter labextension install jupyterlab_voyager
 
 # RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
 #  && cd jupyterlab-variableInspector && npm install \
