@@ -27,7 +27,10 @@ RUN apt-get update && apt-get install -y curl bzip2 xvfb ffmpeg git libxrender1
 RUN pip install animalai
 RUN pip install animalai-train
 RUN pip install torch torchvision
-#RUN conda clean --all -f --yes
+RUN pip install pandas scikit-learn scikit-image
+RUN pip install ipywidgets && \
+    jupyter nbextension enable --py widgetsnbextension
+
 
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.
