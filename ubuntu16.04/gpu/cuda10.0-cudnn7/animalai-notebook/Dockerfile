@@ -18,24 +18,6 @@ WORKDIR $HOME
 # RUN pip install --upgrade pip \
 #   && conda update conda
 
-# # ==============================================================
-# #  Install Tensorflow & Keras
-# # ==============================================================
-
-# RUN pip install tensorflow-gpu keras
-
-# # ==============================================================
-# #  Install PyTorch & Fastai
-# # ==============================================================
-
-# RUN pip install --upgrade numpy
-
-# RUN conda install -c conda-forge mock && conda install -y mkl -c intel \
-#   && conda install pytorch torchvision cuda100 -c pytorch \
-#   && conda clean -tipsy
-
-# RUN pip install fastai fastprogress
-
 # ==============================================================
 #  Install Animalai Framework
 # ==============================================================
@@ -44,9 +26,8 @@ RUN apt-get update && apt-get install -y curl bzip2 xvfb ffmpeg git libxrender1
 
 RUN pip install animalai
 RUN pip install animalai-train
-RUN conda install --quiet --yes bokeh h5py hdf5 ipywidgets matplotlib numba pandas scikit-image scikit-learn  scipy seaborn 
 RUN conda install pytorch torchvision -c pytorch
-RUN conda clean --all -f -y
+RUN conda clean --all -f --yes
 
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.
