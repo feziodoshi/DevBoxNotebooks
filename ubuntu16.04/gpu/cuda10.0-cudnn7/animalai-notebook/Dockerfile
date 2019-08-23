@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y curl bzip2 xvfb ffmpeg git libxrender1
 
 RUN pip install animalai
 RUN pip install animalai-train
-RUN pip install tor torchvision
+RUN pip install torch torchvision
 #RUN conda clean --all -f --yes
 
 # ==============================================================
