@@ -1,27 +1,15 @@
 # ColinConwell/base-notebook for deep learning
 #
-# Runs a fully-loaded jupyterlab notebook server with access to the GPU on
-# the host machine, running Ubuntu 16.04, CUDA 10.0, CUDNN7, python3,
-# and including most of the packages you might need for deep learning,
-# experiments except a deep learning framework! (we build those from this image)
-#
-# build it:
 # docker build -t cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 https://github.com/ColinConwell/notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/base-notebook
 #
-# generate a password:
-# nvidia-docker run -it --rm cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 python genpass.py -p 'supersecretpassword'
-#
-# If you are using jupyterhub, this image can be used with Dockerspawner to
-# spawn a single-user notebook.
-
 #https://gitlab.com/nvidia/cuda/blob/ubuntu16.04/10.0/base/Dockerfile
+#https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
+#https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile
+#https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
 LABEL maintainer="Colin Conwell <conwell@g.harvard.edu>"
 
-USER root
-
-LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 ARG NB_USER="jovyan"
 ARG NB_UID="1000"
 ARG NB_GID="100"
@@ -173,3 +161,11 @@ RUN fix-permissions /etc/jupyter/
 USER $NB_UID
 
 # Switch back to jovyan to avoid accidental container runs as root
+
+# Run a fully-loaded jupyterlab notebook server with access to the GPU on
+# the host machine, running Ubuntu 16.04, CUDA 10.0, CUDNN7, Python3,
+# and including most of the packages you might need for deep learning,
+# experiments except a deep learning framework.
+
+# generate a password:
+# nvidia-docker run -it --rm cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 python genpass.py -p 'supersecretpassword'
