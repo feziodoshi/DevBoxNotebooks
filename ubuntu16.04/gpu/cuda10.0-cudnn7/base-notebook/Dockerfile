@@ -5,34 +5,11 @@
 # and including most of the packages you might need for deep learning,
 # experiments except a deep learning framework! (we build those from this image)
 #
-# The image begins with nvidia/cuda image, then adds in jupyter/docker-stacks/scipy-notebook
-# https://github.com/jupyter/docker-stacks/tree/master/scipy-notebook
-#
-# The Jupyter server uses a password specified in jupyter_notebook_config.py
-# To use tokens instead, comment out the password line of the config file:
-# c.NotebookApp.password = 'sha1:b43e2d39955f:b09acc36be8f4d051f6922e10f024db6d7dddd4b'
-#
-# You can then generate your own password by running the following in python:
-# from notebook.auth import passwd
-# print(passwd('supersecretpassword'))
-#
-# Then update the config file:
-# c.NotebookApp.password = '...'
-#
-# uncomment the password line, and rebuild the image (fast because the config
-# is copied at the end). You should then be able to login with your password.
-#
 # build it:
 # docker build -t cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 https://github.com/ColinConwell/notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/base-notebook
 #
 # generate a password:
-# nvidia-docker run -it --rm grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7 python genpass.py -p 'supersecretpassword'
-#
-# mount it:
-# docker run -it --rm grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7 bash
-#
-# run it:
-# docker run -it --rm -p 8888:8888 grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+# nvidia-docker run -it --rm cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 python genpass.py -p 'supersecretpassword'
 #
 # If you are using jupyterhub, this image can be used with Dockerspawner to
 # spawn a single-user notebook.
@@ -97,6 +74,31 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
     chmod g+w /etc/passwd && \
     fix-permissions $HOME && \
     fix-permissions "$(dirname $CONDA_DIR)"
+
+# Install all OS dependencies for fully functional notebook server
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+    build-essential \
+    emacs \
+    git \
+    inkscape \
+    jed \
+    libsm6 \
+    libxext-dev \
+    libxrender1 \
+    lmodern \
+    netcat \
+    pandoc \
+    python-dev \
+    texlive-fonts-extra \
+    texlive-fonts-recommended \
+    texlive-generic-recommended \
+    texlive-latex-base \
+    texlive-latex-extra \
+    texlive-xetex \
+    tzdata \
+    unzip \
+    nano \
+    && rm -rf /var/lib/apt/lists/*
 
 USER $NB_UID
 WORKDIR $HOME
