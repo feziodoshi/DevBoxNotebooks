@@ -4,7 +4,7 @@
 # Build Command:
 # > sudo nvidia-docker build -t cocoflow/animalai:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/animalai-notebook
 
-FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+FROM cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
 # MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
@@ -36,22 +36,22 @@ WORKDIR $HOME
 
 # RUN pip install fastai fastprogress
 
-# # ==============================================================
-# #  Install Animalai Framework
-# # ==============================================================
+# ==============================================================
+#  Install Animalai Framework
+# ==============================================================
 
-# RUN apt-get update && \
-#     apt-get install -y curl bzip2 xvfb ffmpeg git libxrender1
+RUN apt-get update && \
+    apt-get install -y curl bzip2 xvfb ffmpeg git libxrender1
 
-# RUN pip install animalai
+RUN pip install animalai
 
-# ENV HTTP_PROXY ""
-# ENV HTTPS_PROXY ""
-# ENV http_proxy ""
-# ENV https_proxy ""
+ENV HTTP_PROXY ""
+ENV HTTPS_PROXY ""
+ENV http_proxy ""
+ENV https_proxy ""
 
-# RUN pip install animalai-train
-# RUN pip install torch torchvision
+RUN pip install animalai-train
+RUN pip install torch torchvision
 
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.
