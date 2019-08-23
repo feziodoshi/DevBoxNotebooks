@@ -44,7 +44,7 @@ RUN apt-get update && apt-get install -y curl bzip2 xvfb ffmpeg git libxrender1
 
 RUN pip install animalai
 RUN pip install animalai-train
-RUN conda install --quiet --yes scipy seaborn 
+RUN conda install --quiet --yes bokeh h5py hdf5 ipywidgets matplotlib numba pandas scikit-image scikit-learn  scipy seaborn 
 RUN conda install pytorch torchvision -c pytorch
 RUN conda clean --all -f -y
 
