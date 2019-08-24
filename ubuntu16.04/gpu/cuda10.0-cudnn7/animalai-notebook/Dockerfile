@@ -27,9 +27,8 @@ RUN apt-get update && apt-get install -y curl bzip2 xvfb ffmpeg git libxrender1
 RUN pip install animalai
 RUN pip install animalai-train
 RUN pip install torch torchvision
-RUN pip install pandas scikit-learn scikit-image
-RUN pip install ipywidgets && \
-    jupyter nbextension enable --py widgetsnbextension
+RUN pip install pandas seaborn scikit-learn scikit-image
+RUN pip install ipywidgets && jupyter nbextension enable --py widgetsnbextension
 
 
 # ==============================================================
