@@ -29,6 +29,8 @@ RUN pip install animalai-train
 RUN pip install torch torchvision
 RUN pip install pandas seaborn scikit-learn scikit-image
 RUN pip install ipywidgets && jupyter nbextension enable --py widgetsnbextension
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
 
 
 # ==============================================================
