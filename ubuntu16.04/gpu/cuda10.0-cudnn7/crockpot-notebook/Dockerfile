@@ -4,7 +4,7 @@
 # Build Command:
 # > sudo nvidia-docker build -t cocoflow/crockpot:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/crockpot-notebook
 
-FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+FROM cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
 MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
 
@@ -18,6 +18,8 @@ WORKDIR $HOME
 RUN pip install --upgrade pip \
   && conda update conda
 
+RUN pip install --upgrade numpy
+
 # ==============================================================
 #  Install Tensorflow & Keras
 # ==============================================================
@@ -27,8 +29,6 @@ RUN pip install tensorflow-gpu keras
 # ==============================================================
 #  Install PyTorch
 # ==============================================================
-
-RUN pip install --upgrade numpy
 
 RUN conda install -c conda-forge mock && conda install -y mkl -c intel \
   && conda install pytorch torchvision cuda100 -c pytorch \

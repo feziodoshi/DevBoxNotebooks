@@ -158,9 +158,8 @@ USER root
 RUN fix-permissions /etc/jupyter/
 
 # Switch back to jovyan to avoid accidental container runs as root
+WORKDIR /home/$NB_USER/work/
 USER $NB_UID
-
-# Switch back to jovyan to avoid accidental container runs as root
 
 # Run a fully-loaded jupyterlab notebook server with access to the GPU on
 # the host machine, running Ubuntu 16.04, CUDA 10.0, CUDNN7, Python3,

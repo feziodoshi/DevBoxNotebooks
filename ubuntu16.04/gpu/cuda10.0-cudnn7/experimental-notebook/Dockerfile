@@ -108,12 +108,6 @@ RUN jupyter labextension install @jupyterlab/plotly-extension \
 RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
 
 # ==============================================================
-#  Install Latest Fastai Framework
-# ==============================================================
-
-RUN conda install -c fastai fastai
-
-# ==============================================================
 #  INSTALL OPENAI-GYM
 # ==============================================================
 

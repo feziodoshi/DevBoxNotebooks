@@ -32,7 +32,6 @@ RUN pip install ipywidgets && jupyter nbextension enable --py widgetsnbextension
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 
-
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.
 # ==============================================================
