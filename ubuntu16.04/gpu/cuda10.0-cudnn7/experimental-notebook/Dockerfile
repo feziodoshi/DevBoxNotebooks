@@ -1,7 +1,5 @@
 # cocoflow/experimental:latest
-# Jupyter notebook with gpu suppport (nvidia CUDA cuDNN), and various frameworks installed.
 
-# Build Command:
 # > sudo nvidia-docker build -t cocoflow/experimental:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/experimental-notebook
 
 FROM cocoflow/crockpot:latest
@@ -48,8 +46,6 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-RUN pip install jupyterlab_latex
-
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
     jupyter labextension install @jupyterlab/plotly-extension --no-build && \
@@ -58,13 +54,14 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter labextension install jupyterlab_bokeh --no-build && \
     jupyter labextension install @jupyterlab/latex --no-build && \
     jupyter labextension install @jupyterlab/toc --no-build && \
+    jupyter labextension install @jupyterlab/git --no-build && \
     jupyter lab build --dev-build=False && \
     npm cache clean --force && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn && \
     rm -rf /home/$NB_USER/.node-gyp && \
     fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER 
+    fix-permissions /home/$NB_USER
 
 # RUN pip install jupyterlab_code_formatter ipympl
 

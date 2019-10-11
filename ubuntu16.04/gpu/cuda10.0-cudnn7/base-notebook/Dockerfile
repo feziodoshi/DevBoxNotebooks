@@ -1,6 +1,6 @@
 # ColinConwell/base-notebook for deep learning
 #
-# docker build -t cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 https://github.com/ColinConwell/notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/base-notebook
+# sudo docker build -t cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 https://github.com/ColinConwell/notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/base-notebook
 #
 #https://gitlab.com/nvidia/cuda/blob/ubuntu16.04/10.0/base/Dockerfile
 #https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
