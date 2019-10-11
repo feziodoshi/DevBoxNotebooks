@@ -127,9 +127,8 @@ RUN conda install --quiet --yes \
   'r-psych' \
   && conda clean -tipsy
 
-RUN conda skeleton cran r-pacman && \
-  conda build r-pacman && \
-  conda install r-pacman
+RUN R -e "install.packages('pacman', repos = 'http://cran.us.r-project.org')"
+
 
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.
