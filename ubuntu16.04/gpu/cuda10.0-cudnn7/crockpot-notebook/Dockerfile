@@ -99,7 +99,6 @@ RUN apt-get update && \
 # R packages
 RUN conda install --quiet --yes \
   'r-base' \
-  'r-pacman' \
   'r-irkernel' \
   'r-plyr' \
   'r-devtools' \
