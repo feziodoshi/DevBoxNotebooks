@@ -16,7 +16,7 @@ WORKDIR $HOME
 # ==============================================================
 
 RUN pip install --upgrade pip \
-  && conda update conda
+  && conda update -n base conda
 
 RUN pip install --upgrade numpy
 
@@ -55,6 +55,8 @@ RUN conda install --quiet --yes \
     'vincent' \
     'xlrd' \
     && conda clean --all -f -y
+
+RUN pip install opencv-python
 
 # ==============================================================
 #  Install Tensorflow & Keras
@@ -127,7 +129,7 @@ RUN conda install --quiet --yes \
   'r-psych' \
   && conda clean -tipsy
 
-RUN R -e "install.packages('pacman', repos = 'http://cran.us.r-project.org')"
+RUN R -e "install.packages('pacman', quiet = TRUE, repos = 'http://cran.us.r-project.org')"
 
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.
