@@ -56,8 +56,8 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter labextension install jupyterlab-drawio --no-build && \
     jupyter labextension install jupyterlab-scales --no-build && \
     jupyter labextension install jupyterlab_bokeh --no-build && \
-    jupyter labextension install jupyterlab/latex --no-build && \
-    jupyter labextension install jupyterlab/toc --no-build && \
+    jupyter labextension install @jupyterlab/latex --no-build && \
+    jupyter labextension install @jupyterlab/toc --no-build && \
     jupyter lab build --dev-build=False && \
     npm cache clean --force && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \

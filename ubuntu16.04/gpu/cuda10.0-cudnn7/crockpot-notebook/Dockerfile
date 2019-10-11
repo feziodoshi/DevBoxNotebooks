@@ -28,8 +28,6 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends ffmpeg && \
     rm -rf /var/lib/apt/lists/*
 
-RUN conda install -c r r-essentials
-
 RUN conda install --quiet --yes \
     'beautifulsoup4' \
     'conda-forge::blas=*=openblas' \
@@ -96,6 +94,8 @@ RUN apt-get update && \
     gcc && \
     rm -rf /var/lib/apt/lists/*
 
+RUN conda install -c r r-essentials
+
 # R packages
 RUN conda install --quiet --yes \
   'r-base' \
@@ -128,7 +128,6 @@ RUN conda install --quiet --yes \
   && conda clean -tipsy
 
 RUN R -e "install.packages('pacman', repos = 'http://cran.us.r-project.org')"
-
 
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.
