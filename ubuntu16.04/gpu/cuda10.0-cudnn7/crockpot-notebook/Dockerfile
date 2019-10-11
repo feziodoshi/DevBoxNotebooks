@@ -21,6 +21,44 @@ RUN pip install --upgrade pip \
 RUN pip install --upgrade numpy
 
 # ==============================================================
+#  Install Machine Learning Packages
+# ==============================================================
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN conda install -c r r-essentials
+
+RUN conda install --quiet --yes \
+    'beautifulsoup4' \
+    'conda-forge::blas=*=openblas' \
+    'bokeh' \
+    'cloudpickle' \
+    'cython' \
+    'dask' \
+    'dill' \
+    'h5py' \
+    'hdf5' \
+    'ipywidgets' \
+    'matplotlib-base' \
+    'numba' \
+    'numexpr' \
+    'pandas' \
+    'patsy' \
+    'protobuf' \
+    'scikit-image' \
+    'scikit-learn' \
+    'scipy' \
+    'seaborn' \
+    'sqlalchemy' \
+    'statsmodels' \
+    'sympy' \
+    'vincent' \
+    'xlrd' \
+    && conda clean --all -f -y
+
+# ==============================================================
 #  Install Tensorflow & Keras
 # ==============================================================
 
@@ -30,9 +68,13 @@ RUN pip install tensorflow-gpu keras
 #  Install PyTorch
 # ==============================================================
 
-RUN conda install -c conda-forge mock && conda install -y mkl -c intel \
-  && conda install pytorch torchvision cuda100 -c pytorch \
-  && conda clean -tipsy
+RUN pip install torch torchvision
+
+# ==============================================================
+#  Install FastAI
+# ==============================================================
+
+RUN pip install fastai fastprogress
 
 # ==============================================================
 #  Install Pyro
@@ -41,10 +83,50 @@ RUN conda install -c conda-forge mock && conda install -y mkl -c intel \
 RUN pip install --upgrade pyro-ppl
 
 # ==============================================================
-#  Install FastAI
+#  Install R Kernel
 # ==============================================================
 
-RUN pip install fastai fastprogress
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    fonts-dejavu \
+    unixodbc \
+    unixodbc-dev \
+    r-cran-rodbc \
+    gfortran \
+    gcc && \
+    rm -rf /var/lib/apt/lists/*
+
+# R packages
+RUN conda install --quiet --yes \
+  'r-base' \
+  'r-pacman' \
+  'r-irkernel' \
+  'r-plyr' \
+  'r-devtools' \
+  'r-tidyverse' \
+  'r-shiny' \
+  'r-rmarkdown' \
+  'r-forecast' \
+  'r-rsqlite' \
+  'r-reshape2' \
+  'r-caret' \
+  'r-rcurl' \
+  'r-crayon' \
+  'r-randomforest' \
+  'r-htmltools' \
+  'r-sparklyr' \
+  'r-htmlwidgets' \
+  'r-hexbin' \
+  'r-ggfortify' \
+  'r-bootstrap' \
+  'r-data.table' \
+  'r-corrplot' \
+  'r-lme4' \
+  'r-glmnet' \
+  'r-lattice' \
+  'r-pROC' \
+  'r-psych' \
+  && conda clean -tipsy
 
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.

@@ -12,49 +12,6 @@ USER root
 WORKDIR $HOME
 
 # ==============================================================
-#  Install R Kernel
-# ==============================================================
-
-RUN apt-get update && \
-  apt-get install -y --no-install-recommends \
-  fonts-dejavu \
-  tzdata \
-  gfortran \
-  gcc && \
-  rm -rf /var/lib/apt/lists/*
-
-# R packages
-RUN conda install --quiet --yes \
-  'r-base' \
-  'r-irkernel' \
-  'r-plyr' \
-  'r-devtools' \
-  'r-tidyverse' \
-  'r-shiny' \
-  'r-rmarkdown' \
-  'r-forecast' \
-  'r-rsqlite' \
-  'r-reshape2' \
-  'r-caret' \
-  'r-rcurl' \
-  'r-crayon' \
-  'r-randomforest' \
-  'r-htmltools' \
-  'r-sparklyr' \
-  'r-htmlwidgets' \
-  'r-hexbin' \
-  'r-ggfortify' \
-  'r-bootstrap' \
-  'r-data.table' \
-  'r-corrplot' \
-  'r-lmerTest' \
-  'r-glmnet' \
-  'r-lattice' \
-  'r-pROC' \
-  'r-psych' \
-  && conda clean -tipsy
-
-# ==============================================================
 #  INSTALL BLENDER
 # ==============================================================
 
@@ -91,33 +48,43 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-RUN conda install -c conda-forge widgetsnbextension \
- && conda install -c conda-forge jupyter_contrib_nbextensions \
- && conda install -c conda-forge jupyter_nbextensions_configurator
+RUN pip install jupyterlab_latex
 
-RUN jupyter labextension install @jupyterlab/plotly-extension \
- && jupyter labextension install @mflevine/jupyterlab_html \
- && jupyter labextension install jupyterlab-drawio \
- && jupyter labextension install jupyterlab-scales 
- #&& jupyter labextension install jupyterlab_voyager
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+    jupyter labextension install @jupyterlab/plotly-extension --no-build && \
+    jupyter labextension install jupyterlab-drawio --no-build && \
+    jupyter labextension install jupyterlab-scales --no-build && \
+    jupyter labextension install jupyterlab_bokeh --no-build && \
+    jupyter labextension install jupyterlab/latex --no-build && \
+    jupyter labextension install jupyterlab/toc --no-build && \
+    jupyter lab build --dev-build=False && \
+    npm cache clean --force && \
+    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+    rm -rf /home/$NB_USER/.cache/yarn && \
+    rm -rf /home/$NB_USER/.node-gyp && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER 
+
+# RUN pip install jupyterlab_code_formatter ipympl
+
+RUN jupyter labextension install @ryantam626/jupyterlab_code_formatter && \
+  jupyter labextension install @krassowski/jupyterlab_go_to_definition && \
+  jupyter labextension install jupyterlab_voyager --no-build && \
+  jupyter labextension install jupyter-matplotlib && \
+  jupyter lab build --dev-build=False && \
+  npm cache clean --force && \
+  rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+  rm -rf /home/$NB_USER/.cache/yarn && \
+  rm -rf /home/$NB_USER/.node-gyp && \
+  fix-permissions $CONDA_DIR && \
+  fix-permissions /home/$NB_USER 
 
 # RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
 #  && cd jupyterlab-variableInspector && npm install \
 #  && npm run build && jupyter labextension install .
 
-RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
-
-# ==============================================================
-#  INSTALL OPENAI-GYM
-# ==============================================================
-
-# RUN apt-get -y update && \
-#   apt-get install -y python-pyglet python3-opengl zlib1g-dev \
-#   libjpeg-dev patchelf cmake swig libboost-all-dev \
-#   libsdl2-dev libosmesa6-dev xvfb ffmpeg
-# RUN pip install --upgrade gym \
-#   && pip install 'gym[atari]' \
-#   && pip install 'gym[box2d]'
+#RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
 
 # ==============================================================
 #  Fixing permissions for R installations
