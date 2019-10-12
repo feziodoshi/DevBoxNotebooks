@@ -10,41 +10,10 @@ USER root
 WORKDIR $HOME
 
 # ==============================================================
-#  INSTALL BLENDER
-# ==============================================================
-
-RUN apt-get update && \
-	apt-get install -y \
-		curl \
-		bzip2 \
-		libfreetype6 \
-		libgl1-mesa-dev \
-		libglu1-mesa \
-		libxi6 \
-		libxrender1 && \
-	apt-get -y autoremove && \
-	rm -rf /var/lib/apt/lists/*
-
-RUN cp /etc/ssl/certs/ca-certificates.crt /opt/conda/ssl/cacert.pem
-
-ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
-
-RUN mkdir /usr/local/blender && \
-	curl -SL "$BLENDER_BZ2_URL" -o blender.tar.bz2 && \
-	tar -jxvf blender.tar.bz2 -C /usr/local/blender --strip-components=1 && \
-	rm blender.tar.bz2
-
-ENV PATH /usr/local/blender:$PATH
-ENV BLENDER_MODULES /usr/local/blender/2.79/python/lib/python3.5/site-packages/
-
-RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
-RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
-  --upgrade pip numpy scipy pandas
-
-
-# ==============================================================
 #  Install Jupyterlab Extensions
 # ==============================================================
+
+RUN pip install jupyterlab-git jupyterlab_latex
 
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
@@ -82,6 +51,38 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 #  && npm run build && jupyter labextension install .
 
 #RUN pip install ipympl && jupyter labextension install jupyter-matplotlib
+
+# ==============================================================
+#  INSTALL BLENDER
+# ==============================================================
+
+RUN apt-get update && \
+	apt-get install -y \
+		curl \
+		bzip2 \
+		libfreetype6 \
+		libgl1-mesa-dev \
+		libglu1-mesa \
+		libxi6 \
+		libxrender1 && \
+	apt-get -y autoremove && \
+	rm -rf /var/lib/apt/lists/*
+
+RUN cp /etc/ssl/certs/ca-certificates.crt /opt/conda/ssl/cacert.pem
+
+ENV BLENDER_BZ2_URL https://mirror.clarkson.edu/blender/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
+
+RUN mkdir /usr/local/blender && \
+	curl -SL "$BLENDER_BZ2_URL" -o blender.tar.bz2 && \
+	tar -jxvf blender.tar.bz2 -C /usr/local/blender --strip-components=1 && \
+	rm blender.tar.bz2
+
+ENV PATH /usr/local/blender:$PATH
+ENV BLENDER_MODULES /usr/local/blender/2.79/python/lib/python3.5/site-packages/
+
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
+RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
+  --upgrade pip numpy scipy pandas
 
 # ==============================================================
 #  Fixing permissions for R installations
