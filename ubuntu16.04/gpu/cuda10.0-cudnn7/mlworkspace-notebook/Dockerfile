@@ -6,11 +6,11 @@
 
 FROM mltooling/ml-workspace-gpu:latest
 
-ARG NB_USER="jovyan"
-ARG NB_UID="1000"
-ARG NB_GID="100"
+# ARG NB_USER="jovyan"
+# ARG NB_UID="1000"
+# ARG NB_GID="100"
 
-USER root
+# USER root
 
 # Install all OS dependencies for notebook server that starts but lacks all
 # features (e.g., download as all possible file formats)
@@ -30,17 +30,24 @@ USER root
 #     locale-gen
 
 # Configure environment
-ENV CONDA_DIR=/opt/conda \
-    SHELL=/bin/bash \
-    NB_USER=$NB_USER \
-    NB_UID=$NB_UID \
-    NB_GID=$NB_GID \
-    LC_ALL=en_US.UTF-8 \
-    LANG=en_US.UTF-8 \
-    LANGUAGE=en_US.UTF-8 \
-    JUPYTER_ENABLE_LAB=1
-ENV PATH=$CONDA_DIR/bin:$PATH \
-    HOME=/home/$NB_USER
+# ENV CONDA_DIR=/opt/conda \
+#     SHELL=/bin/bash \
+#     NB_USER=$NB_USER \
+#     NB_UID=$NB_UID \
+#     NB_GID=$NB_GID \
+#     LC_ALL=en_US.UTF-8 \
+#     LANG=en_US.UTF-8 \
+#     LANGUAGE=en_US.UTF-8 \
+#     JUPYTER_ENABLE_LAB=1
+# ENV PATH=$CONDA_DIR/bin:$PATH \
+#     HOME=/home/$NB_USER
+    
+# RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su
+# RUN sed -i.bak -e 's/^%admin/#%admin/' /etc/sudoers
+# RUN sed -i.bak -e 's/^%sudo/#%sudo/' /etc/sudoers
+# RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER
+# RUN mkdir -p $CONDA_DIR
+
 
 # Add a script that we will use to correct permissions after running certain commands
 # ADD fix-permissions /usr/local/bin/fix-permissions
@@ -50,15 +57,15 @@ ENV PATH=$CONDA_DIR/bin:$PATH \
 
 # Create NB_USER wtih name jovyan user with UID=1000 and in the 'users' group
 # and make sure these dirs are writable by the `users` group.
-RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
-    sed -i.bak -e 's/^%admin/#%admin/' /etc/sudoers && \
-    sed -i.bak -e 's/^%sudo/#%sudo/' /etc/sudoers && \
-    useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
-    mkdir -p $CONDA_DIR && \
-    chown $NB_USER:$NB_GID $CONDA_DIR && \
-    chmod g+w /etc/passwd #&& \
-    # fix-permissions $HOME && \
-    # fix-permissions "$(dirname $CONDA_DIR)"
+# RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
+#     sed -i.bak -e 's/^%admin/#%admin/' /etc/sudoers && \
+#     sed -i.bak -e 's/^%sudo/#%sudo/' /etc/sudoers && \
+#     useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
+#     mkdir -p $CONDA_DIR && \
+#     chown $NB_USER:$NB_GID $CONDA_DIR && \
+#     chmod g+w /etc/passwd && \
+#     fix-permissions $HOME && \
+#     fix-permissions "$(dirname $CONDA_DIR)"
 
 # Install all OS dependencies for fully functional notebook server
 # RUN apt-get update && apt-get install -yq --no-install-recommends \
@@ -85,12 +92,12 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
 #     nano \
 #     && rm -rf /var/lib/apt/lists/*
 
-USER $NB_UID
-WORKDIR $HOME
+# USER $NB_UID
+# WORKDIR $HOME
 
-# Setup work directory for backward-compatibility
-RUN mkdir /home/$NB_USER/work && \
-    fix-permissions /home/$NB_USER
+# # Setup work directory for backward-compatibility
+# RUN mkdir /home/$NB_USER/work && \
+#     fix-permissions /home/$NB_USER
 
 # Install conda as jovyan and check the md5 sum provided on the download site
 # ENV MINICONDA_VERSION=4.6.14 \
