@@ -27,7 +27,7 @@ RUN jupyter labextension install @jupyterlab/plotly-extension --no-build && \
   jupyter labextension install @krassowski/jupyterlab_go_to_definition && \
   #jupyter labextension install jupyterlab_voyager --no-build && \
   jupyter labextension install jupyter-matplotlib && \
-  jupyter serverextension enable --py jupyterlab_git &&
+  jupyter serverextension enable --py jupyterlab_git && \
   jupyter lab build --dev-build=False && \
   npm cache clean --force && \
   rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
