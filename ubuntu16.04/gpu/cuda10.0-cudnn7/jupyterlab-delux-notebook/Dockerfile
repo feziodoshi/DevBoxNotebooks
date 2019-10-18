@@ -1,6 +1,6 @@
 # cocoflow/experimental:latest
 
-# > sudo nvidia-docker build -t cocoflow/experimental:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/jupyterlab-delux-notebook
+# > sudo nvidia-docker build -t cocoflow/jupyterlab-delux:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/jupyterlab-delux-notebook
 
 FROM cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
@@ -31,17 +31,6 @@ RUN conda install --quiet --yes 'jupyterlab=1.0.3'
 #   rm -rf /home/$NB_USER/.node-gyp && \
 #   fix-permissions $CONDA_DIR && \
 #   fix-permissions /home/$NB_USER
-
-# ==============================================================
-#  Fixing permissions for R installations
-# ==============================================================
-
-#RUN chmod 600 /opt/conda/lib/R
-#RUN adduser $NB_USER staff
-
-# ==============================================================
-#  set workdir and user for jupyter notebook use
-# ==============================================================
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER

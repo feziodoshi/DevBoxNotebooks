@@ -65,7 +65,7 @@ RUN pip install opencv-python
 
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-    jupyter lab build --dev-build=False && \
+    jupyter lab build --dev-build=False --minimize=False && \
     npm cache clean --force && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn && \
