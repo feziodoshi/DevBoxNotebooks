@@ -16,7 +16,7 @@ WORKDIR $HOME
 # ==============================================================
 
 RUN pip install --upgrade pip \
-  && conda update -n base conda
+  && conda update conda
 
 RUN pip install --upgrade numpy
 

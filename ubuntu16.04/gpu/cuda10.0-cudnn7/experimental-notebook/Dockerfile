@@ -25,7 +25,7 @@ RUN jupyter labextension install @jupyterlab/plotly-extension --no-build && \
   jupyter labextension install @jupyterlab/git --no-build && \
   jupyter labextension install @ryantam626/jupyterlab_code_formatter && \
   jupyter labextension install @krassowski/jupyterlab_go_to_definition && \
-  jupyter labextension install jupyterlab_voyager --no-build && \
+  #jupyter labextension install jupyterlab_voyager --no-build && \
   jupyter labextension install jupyter-matplotlib && \
     jupyter lab build --dev-build=False && \
     npm cache clean --force && \
