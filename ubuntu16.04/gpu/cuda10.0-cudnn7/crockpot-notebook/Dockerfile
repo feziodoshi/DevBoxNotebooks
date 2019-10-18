@@ -45,6 +45,7 @@ RUN conda install --quiet --yes \
     'pandas' \
     'patsy' \
     'protobuf' \
+    'pymc3' \
     'scikit-image' \
     'scikit-learn' \
     'scipy' \
@@ -59,28 +60,27 @@ RUN conda install --quiet --yes \
 RUN pip install opencv-python
 
 # ==============================================================
-#  Install Tensorflow & Keras
+#  Install Jupyterlab Extensions
 # ==============================================================
 
-RUN pip install tensorflow-gpu keras
+# Install extensions for JupyterLab
+
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+    jupyter lab build --dev-build=False && \
+    npm cache clean --force && \
+    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+    rm -rf /home/$NB_USER/.cache/yarn && \
+    rm -rf /home/$NB_USER/.node-gyp && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
 
 # ==============================================================
-#  Install PyTorch
+#  Install Deep Learning Frameworks
 # ==============================================================
 
-RUN pip install torch torchvision
-
-# ==============================================================
-#  Install FastAI
-# ==============================================================
-
-RUN pip install fastai fastprogress
-
-# ==============================================================
-#  Install Pyro
-# ==============================================================
-
-RUN pip install --upgrade pyro-ppl
+RUN pip install tensorflow-gpu keras torch torchvision \
+  fastai fastprogress pyro-ppl edward
 
 # ==============================================================
 #  Install R Kernel
