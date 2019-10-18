@@ -16,12 +16,11 @@ WORKDIR $HOME
 RUN pip install jupyterlab-git jupyterlab_latex ipympl
 
 RUN jupyter labextension install @jupyterlab/latex --no-build && \
+  jupyter labextension install jupyter-matplotlib --no-build && \
   jupyter labextension install jupyterlab-drawio --no-build && \
   jupyter labextension install jupyterlab_bokeh --no-build && \
   jupyter labextension install @jupyterlab/toc --no-build && \
   jupyter labextension install @jupyterlab/git --no-build && \
-  jupyter labextension install jupyterlab_voyager --no-build && \
-  jupyter labextension install jupyter-matplotlib && \
   jupyter serverextension enable --py jupyterlab_git && \
   jupyter lab build --dev-build=False && \
   npm cache clean --force && \
