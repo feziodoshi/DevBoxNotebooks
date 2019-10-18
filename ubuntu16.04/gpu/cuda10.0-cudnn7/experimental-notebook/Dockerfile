@@ -13,19 +13,14 @@ WORKDIR $HOME
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-RUN pip install jupyterlab-git jupyterlab_latex \
-    jupyterlab_code_formatter ipympl
+RUN pip install jupyterlab-git jupyterlab_latex ipympl
 
-RUN jupyter labextension install @jupyterlab/plotly-extension --no-build && \
+RUN jupyter labextension install @jupyterlab/latex --no-build && \
   jupyter labextension install jupyterlab-drawio --no-build && \
-  jupyter labextension install jupyterlab-scales --no-build && \
   jupyter labextension install jupyterlab_bokeh --no-build && \
-  jupyter labextension install @jupyterlab/latex --no-build && \
   jupyter labextension install @jupyterlab/toc --no-build && \
   jupyter labextension install @jupyterlab/git --no-build && \
-  jupyter labextension install @ryantam626/jupyterlab_code_formatter && \
-  jupyter labextension install @krassowski/jupyterlab_go_to_definition && \
-  #jupyter labextension install jupyterlab_voyager --no-build && \
+  jupyter labextension install jupyterlab_voyager --no-build && \
   jupyter labextension install jupyter-matplotlib && \
   jupyter serverextension enable --py jupyterlab_git && \
   jupyter lab build --dev-build=False && \
