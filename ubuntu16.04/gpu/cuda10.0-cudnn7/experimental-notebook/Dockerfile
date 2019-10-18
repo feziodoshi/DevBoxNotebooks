@@ -27,13 +27,14 @@ RUN jupyter labextension install @jupyterlab/plotly-extension --no-build && \
   jupyter labextension install @krassowski/jupyterlab_go_to_definition && \
   #jupyter labextension install jupyterlab_voyager --no-build && \
   jupyter labextension install jupyter-matplotlib && \
-    jupyter lab build --dev-build=False && \
-    npm cache clean --force && \
-    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-    rm -rf /home/$NB_USER/.cache/yarn && \
-    rm -rf /home/$NB_USER/.node-gyp && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+  jupyter serverextension enable --py jupyterlab_git &&
+  jupyter lab build --dev-build=False && \
+  npm cache clean --force && \
+  rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+  rm -rf /home/$NB_USER/.cache/yarn && \
+  rm -rf /home/$NB_USER/.node-gyp && \
+  fix-permissions $CONDA_DIR && \
+  fix-permissions /home/$NB_USER
 
 # RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
 #  && cd jupyterlab-variableInspector && npm install \
