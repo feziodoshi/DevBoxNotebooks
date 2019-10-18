@@ -4,8 +4,6 @@
 
 FROM cocoflow/crockpot:latest
 
-#MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
-
 USER root
 WORKDIR $HOME
 

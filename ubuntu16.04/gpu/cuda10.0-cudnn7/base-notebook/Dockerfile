@@ -1,14 +1,8 @@
 # ColinConwell/base-notebook for deep learning
-#
-# sudo docker build -t cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 https://github.com/ColinConwell/notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/base-notebook
-#
-#https://gitlab.com/nvidia/cuda/blob/ubuntu16.04/10.0/base/Dockerfile
-#https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
-#https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile
-#https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
-LABEL maintainer="Colin Conwell <conwell@g.harvard.edu>"
+# sudo docker build -t cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 https://github.com/ColinConwell/notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/base-notebook
+
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
 ARG NB_USER="jovyan"
 ARG NB_UID="1000"
@@ -166,6 +160,12 @@ USER $NB_UID
 # the host machine, running Ubuntu 16.04, CUDA 10.0, CUDNN7, Python3,
 # and including most of the packages you might need for deep learning,
 # experiments except a deep learning framework.
+
+# Based On:
+# https://gitlab.com/nvidia/cuda/blob/ubuntu16.04/10.0/base/Dockerfile
+# https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
+# https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile
+# https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 
 # generate a password:
 # nvidia-docker run -it --rm cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7 python genpass.py -p 'supersecretpassword'

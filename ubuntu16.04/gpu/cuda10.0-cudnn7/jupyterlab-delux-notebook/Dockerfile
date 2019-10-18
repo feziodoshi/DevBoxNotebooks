@@ -4,8 +4,6 @@
 
 FROM cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
-#MAINTAINER ColinConwell <colinconwell@gmail.com, conwell@g.harvard.edu>
-
 USER root
 WORKDIR $HOME
 
