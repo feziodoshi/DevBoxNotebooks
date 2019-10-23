@@ -1,5 +1,3 @@
-# ColinConwell/base-notebook for deep learning
-
 # sudo docker build -t cocoflow/nvcr-tensorflow:ubuntu16.04-cuda10.0-cudnn7 https://github.com/ColinConwell/notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/nvcr-tensorflow
 
 FROM nvcr.io/nvidia/tensorflow:19.09-py3
@@ -24,8 +22,8 @@ USER root
 #     run-one \
 #  && rm -rf /var/lib/apt/lists/*
 
-RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
-    locale-gen
+# RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+#     locale-gen
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda \
