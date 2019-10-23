@@ -1,4 +1,3 @@
-# cocoflow/pytorch:latest
 # Pytorch jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
 
 # Build Command:
