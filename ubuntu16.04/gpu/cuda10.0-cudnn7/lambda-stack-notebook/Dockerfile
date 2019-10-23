@@ -30,20 +30,18 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV NVIDIA_REQUIRE_CUDA "cuda>=10.0"
 ENV CUDA_DEVICE_ORDER=PCI_BUS_ID
 
+RUN apt-get update && apt-get dist-upgrade --yes && apt-get autoremove --yes
+
 #--------------------------------------
 #   Configure for notebook use
 #--------------------------------------
 
 # Setup for JupyterHub / DockerSpawner
 # https://github.com/jupyterhub/dockerspawner
-# RUN pip3 install \
-#     notebook==6.0.0 \
-#     jupyterlab==1.1.* \
-# 	jupyterhub==1.0.* 
-RUN pip3 install \
-	jupyterhub==1.0.* \
-	'notebook>=5.0,<=6.0' \
-	'jupyterlab==1.1.*'
+RUN pip install --upgrade pip & \
+	pip install notebook==6.0.0 \
+    jupyterlab==1.1.* \
+	jupyterhub==1.0.* 
 
 RUN apt-get update && \
 	apt-get install --yes nodejs npm && \
