@@ -38,7 +38,7 @@ RUN apt-get update && apt-get dist-upgrade --yes && apt-get autoremove --yes
 
 # Setup for JupyterHub / DockerSpawner
 # https://github.com/jupyterhub/dockerspawner
-RUN pip install --upgrade pip & \
+RUN pip install --upgrade pip setuptools & \
 	pip install notebook==6.0.0 \
     jupyterlab==1.1.* \
 	jupyterhub==1.0.* 
