@@ -36,10 +36,14 @@ ENV CUDA_DEVICE_ORDER=PCI_BUS_ID
 
 # Setup for JupyterHub / DockerSpawner
 # https://github.com/jupyterhub/dockerspawner
+# RUN pip3 install \
+#     notebook==6.0.0 \
+#     jupyterlab==1.1.* \
+# 	jupyterhub==1.0.* 
 RUN pip3 install \
-    notebook==6.0.0 \
-    jupyterlab==1.1.* \
-	jupyterhub==1.0.* 
+	jupyterhub==1.0.* \
+	'notebook>=5.0,<=6.0' \
+	'jupyterlab==1.1.*'
 
 RUN apt-get update && \
 	apt-get install --yes nodejs npm && \
