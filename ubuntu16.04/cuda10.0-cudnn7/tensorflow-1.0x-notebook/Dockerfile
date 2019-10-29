@@ -1,6 +1,6 @@
 # cocoflow/experimental:latest
 
-# > sudo nvidia-docker build -t cocoflow/jupyterlab-delux:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/jupyterlab-delux-notebook
+# > sudo nvidia-docker build -t cocoflow/experimental:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/experimental
 
 FROM cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
@@ -12,7 +12,7 @@ WORKDIR $HOME
 # ==============================================================
 
 #Rollback to a long-term contigent JupyterLab
-RUN conda install --quiet --yes 'jupyterlab=1.0.3'
+RUN conda install --quiet --yes 'jupyterlab=1.0.0'
 
 RUN pip install jupyterlab-git jupyterlab_latex ipympl
 

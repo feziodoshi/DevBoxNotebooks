@@ -2,7 +2,7 @@
 # Pytorch jupyter notebook with gpu suppport (nvidia CUDA cuDNN).
 
 # Build Command:
-# > sudo nvidia-docker build -t cocoflow/pytorch:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/scratchpad-notebook
+# > sudo nvidia-docker build -t cocoflow/scratchpad:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/gpu/cuda10.0-cudnn7/scratchpad-notebook
 
 FROM grez72/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
