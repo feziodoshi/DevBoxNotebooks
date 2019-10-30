@@ -57,9 +57,7 @@ RUN conda install --quiet --yes \
     'xlrd' \
     && conda clean --all -f -y
 
-RUN pip install opencv-python
-
-RUN pip install keras tensorflow==1.15
+RUN pip install opencv-python keras tensorflow==1.15
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
