@@ -1,6 +1,6 @@
 # cocoflow/experimental:latest
 
-# > sudo nvidia-docker build -t cocoflow/tensorflow-1.1x-notebook:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/tensorflow-1.1x-notebook
+# > sudo nvidia-docker build -t cocoflow/tensorflow-1.0x-notebook:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/tensorflow-1.0x-notebook
 
 FROM cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
