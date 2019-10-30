@@ -59,7 +59,7 @@ RUN conda install --quiet --yes \
 
 RUN pip install opencv-python
 
-RUN pip install tensorflow=1.15
+RUN pip install tensorflow==1.15
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
