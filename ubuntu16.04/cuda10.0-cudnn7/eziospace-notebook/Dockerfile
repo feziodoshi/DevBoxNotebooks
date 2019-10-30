@@ -2,7 +2,7 @@
 
 # > sudo nvidia-docker build -t feziodoshi/eziospace:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/eziospace-notebook
 
-FROM cocoflow/labspace-stable:latest
+FROM cocoflow/labspace:latest
 
 USER root
 WORKDIR $HOME
