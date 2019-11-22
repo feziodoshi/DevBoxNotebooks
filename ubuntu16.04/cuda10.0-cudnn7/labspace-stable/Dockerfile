@@ -1,6 +1,6 @@
 # cocoflow/labspace-stable:latest
 
-# > sudo nvidia-docker build -t cocoflow/labspace:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/labspace
+# > sudo nvidia-docker build -t cocoflow/labspace:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/labspace-stable
 
 FROM cocoflow/crockpot:latest
 
