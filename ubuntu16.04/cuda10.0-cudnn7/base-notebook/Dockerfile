@@ -5,7 +5,7 @@
 FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
 ARG NB_USER="jovyan"
-ARG NB_UID="1000"
+ARG NB_UID="1001"
 ARG NB_GID="100"
 
 USER root
