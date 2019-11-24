@@ -12,7 +12,7 @@ WORKDIR $HOME
 # ==============================================================
 
 #Rollback to a long-term contigent JupyterLab
-RUN pip install --quiet --yes 'jupyterlab=1.0.0'
+RUN pip install 'jupyterlab=1.0.0'
 
 RUN pip install jupyterlab-git jupyterlab_latex ipympl
 
