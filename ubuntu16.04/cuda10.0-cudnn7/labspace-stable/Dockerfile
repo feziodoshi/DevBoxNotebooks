@@ -33,9 +33,9 @@ RUN jupyter labextension install jupyterlab-python-file --no-build && \
 
 RUN pip install jupyterlab-zip
 
-# RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
-#  && cd jupyterlab-variableInspector && npm install \
-#  && npm run build && jupyter labextension install .
+RUN git clone https://github.com/ColinConwell/jupyterlab-variableInspector \
+ && cd jupyterlab-variableInspector && npm install \
+ && npm run build && jupyter labextension install .
 
 # ==============================================================
 #  INSTALL BLENDER
