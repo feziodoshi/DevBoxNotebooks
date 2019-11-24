@@ -34,7 +34,7 @@ RUN jupyter labextension install jupyterlab-python-file --no-build && \
 #  && npm run build && jupyter labextension install .
 
 # ==============================================================
-#  INSTALL BLENDER
+#  Install Blender
 # ==============================================================
 
 RUN apt-get update && \
@@ -64,6 +64,12 @@ ENV BLENDER_MODULES /usr/local/blender/2.79/python/lib/python3.5/site-packages/
 RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
 RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
   --upgrade pip numpy scipy pandas
+
+# ==============================================================
+#  Other Installs
+# ==============================================================
+
+RUN sudo apt-get install tmux
 
 # ==============================================================
 #  Set workdir and user for Jupyter use
