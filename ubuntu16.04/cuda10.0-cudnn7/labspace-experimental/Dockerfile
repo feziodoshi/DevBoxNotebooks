@@ -2,7 +2,7 @@
 
 # > sudo nvidia-docker build -t cocoflow/experimental:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/labspace-experimental
 
-FROM cocoflow/labspace:latest
+FROM cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
 USER root
 WORKDIR $HOME
@@ -16,16 +16,7 @@ RUN conda config --append channels conda-forge
 RUN conda install --quiet --yes 'jupyterlab==1.0.1'
 #RUN pip install 'jupyterlab==1.0.0'
 
-RUN pip install jupyterlab-git jupyterlab_latex ipympl
-
-RUN jupyter labextension install @jupyterlab/latex --no-build && \
-  jupyter labextension install jupyterlab_voyager --no-build && \
-  jupyter labextension install jupyter-matplotlib --no-build && \
-  jupyter labextension install jupyterlab-drawio --no-build && \
-  jupyter labextension install jupyterlab_bokeh --no-build && \
-  jupyter labextension install @jupyterlab/toc --no-build && \
-  jupyter labextension install @jupyterlab/git --no-build && \
-  jupyter serverextension enable --py jupyterlab_git && \
+RUN jupyter labextension install jupyterlab_voyager --no-build && \
   jupyter lab build --dev-build=False && \
   npm cache clean --force && \
   rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
