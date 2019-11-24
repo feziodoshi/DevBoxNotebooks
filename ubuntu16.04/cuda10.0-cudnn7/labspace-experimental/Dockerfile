@@ -1,8 +1,8 @@
 # cocoflow/experimental:latest
 
-# > sudo nvidia-docker build -t cocoflow/experimental:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/experimental
+# > sudo nvidia-docker build -t cocoflow/experimental:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/labspace-experimental
 
-FROM cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7
+FROM cocoflow/labspace:ubuntu16.04-cuda10.0-cudnn7
 
 USER root
 WORKDIR $HOME
