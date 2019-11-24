@@ -14,7 +14,7 @@ WORKDIR $HOME
 #Rollback to a long-term contigent JupyterLab
 RUN conda config --append channels conda-forge
 #RUN conda install --quiet --yes 'jupyterlab==1.0.0'
-RUN pip install 'jupyterlab==1.0.0'
+RUN pip install jupyterlab==1.0.0 ipywidgets
 
 RUN conda install -c conda-forge jupyterlab jupyter_conda
 
