@@ -15,7 +15,7 @@ RUN pip install --upgrade pip \
   && conda update conda
 
 #Rollback to a long-term contigent JupyterLab
-RUN conda install --quiet --yes 'jupyterlab==1.0.2'
+#RUN conda install --quiet --yes 'jupyterlab==1.0.0'
 
 # ==============================================================
 #  Install Machine Learning Packages
@@ -122,7 +122,7 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
     jupyter labextension install jupyterlab_toastify --no-build && \
     jupyter labextension install jupyterlab_conda --no-build && \
-    jupyter labextension install jupyterlab_voyager --no-build && \
+    #jupyter labextension install jupyterlab_voyager --no-build && \
     jupyter lab build --dev-build=False --minimize=False && \
     npm cache clean --force && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
