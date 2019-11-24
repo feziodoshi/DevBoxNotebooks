@@ -2,7 +2,7 @@
 
 # > sudo nvidia-docker build -t cocoflow/experimental:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/labspace-experimental
 
-FROM cocoflow/labspace:latests
+FROM cocoflow/labspace:latest
 
 USER root
 WORKDIR $HOME
