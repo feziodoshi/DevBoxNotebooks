@@ -69,7 +69,11 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
 #  Other Installs
 # ==============================================================
 
-RUN sudo apt-get update & apt install -y tmux
+RUN apt-get update && apt-get -yq dist-upgrade \
+  && apt-get install -yq --no-install-recommends \
+  tmux \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 # ==============================================================
 #  Set workdir and user for Jupyter use
