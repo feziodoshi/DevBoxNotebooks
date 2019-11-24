@@ -14,8 +14,6 @@ WORKDIR $HOME
 RUN pip install --upgrade pip \
   && conda update conda
 
-RUN pip install --upgrade numpy
-
 #Rollback to a long-term contigent JupyterLab
 RUN conda install --quiet --yes 'jupyterlab==1.0.3'
 

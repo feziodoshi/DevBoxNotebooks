@@ -16,8 +16,6 @@ WORKDIR $HOME
 RUN pip install --upgrade pip \
   && conda update conda
 
-RUN pip install --upgrade numpy
-
 # ==============================================================
 #  Install Machine Learning Packages
 # ==============================================================
