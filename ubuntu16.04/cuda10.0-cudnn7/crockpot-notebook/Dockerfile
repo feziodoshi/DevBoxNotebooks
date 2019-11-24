@@ -58,22 +58,6 @@ RUN conda install --quiet --yes \
 RUN pip install opencv-python
 
 # ==============================================================
-#  Install Jupyterlab Extensions
-# ==============================================================
-
-# Install extensions for JupyterLab
-
-RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-    jupyter lab build --dev-build=False --minimize=False && \
-    npm cache clean --force && \
-    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-    rm -rf /home/$NB_USER/.cache/yarn && \
-    rm -rf /home/$NB_USER/.node-gyp && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
-
-# ==============================================================
 #  Install Deep Learning Frameworks
 # ==============================================================
 
@@ -128,6 +112,22 @@ RUN conda install --quiet --yes \
   && conda clean -tipsy
 
 RUN R -e "install.packages('pacman', quiet = TRUE, repos = 'http://cran.us.r-project.org')"
+
+# ==============================================================
+#  Install Jupyterlab Extensions
+# ==============================================================
+
+# Install extensions for JupyterLab
+
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+    jupyter lab build --dev-build=False --minimize=False && \
+    npm cache clean --force && \
+    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+    rm -rf /home/$NB_USER/.cache/yarn && \
+    rm -rf /home/$NB_USER/.node-gyp && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
 
 # ==============================================================
 #  Set workdir and user for jupyter notebook use.
