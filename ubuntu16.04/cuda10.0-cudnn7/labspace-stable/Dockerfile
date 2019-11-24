@@ -17,6 +17,7 @@ RUN jupyter labextension install jupyterlab-python-file --no-build && \
   jupyter labextension install jupyter-matplotlib --no-build && \
   jupyter labextension install jupyterlab-drawio --no-build && \
   jupyter labextension install jupyterlab_bokeh --no-build && \
+  jupyter labextension install @jupyterlab/latex --no-build && \
   jupyter labextension install @jupyterlab/toc --no-build && \
   jupyter labextension install @jupyterlab/git --no-build && \
   jupyter serverextension enable --py jupyterlab_git && \
@@ -27,8 +28,6 @@ RUN jupyter labextension install jupyterlab-python-file --no-build && \
   rm -rf /home/$NB_USER/.node-gyp && \
   fix-permissions $CONDA_DIR && \
   fix-permissions /home/$NB_USER
-
-RUN pip install jupyterlab-zip
 
 # RUN git clone https://github.com/ColinConwell/VariableInspector \
 #  && cd VariableInspector && npm install \
