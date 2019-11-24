@@ -116,13 +116,21 @@ RUN R -e "install.packages('pacman', quiet = TRUE, repos = 'http://cran.us.r-pro
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-RUN conda install -c conda-forge jupyterlab jupyter_conda
+RUN conda install -c conda-forge jupyterlab jupyter_conda && \
+  pip install jupyterlab-git jupyterlab_latex ipympl
 
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-    jupyter labextension install jupyterlab_toastify --no-build && \
-    jupyter labextension install jupyterlab_conda --no-build && \
-    #jupyter labextension install jupyterlab_voyager --no-build && \
+    jupyter labextension install \
+    @jupyter-widgets/jupyterlab-manager \
+    jupyterlab_toastify \
+    jupyterlab_conda \
+    jupyterlab-python-file \
+    jupyter-matplotlib  \
+    jupyterlab-drawio \
+    jupyterlab_bokeh \
+    @jupyterlab/latex \
+    @jupyterlab/git \
+    @jupyterlab/toc --no-build && \
     jupyter lab build --dev-build=False --minimize=False && \
     npm cache clean --force && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
@@ -130,6 +138,26 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     rm -rf /home/$NB_USER/.node-gyp && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
+
+# RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+#     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+#     jupyter labextension install jupyterlab_toastify --no-build && \
+#     jupyter labextension install jupyterlab_conda --no-build && \
+#     jupyter labextension install jupyterlab-python-file --no-build && \
+#     #jupyter labextension install jupyterlab_voyager --no-build && \
+#     jupyter labextension install jupyter-matplotlib --no-build && \
+#     jupyter labextension install jupyterlab-drawio --no-build && \
+#     jupyter labextension install jupyterlab_bokeh --no-build && \
+#     jupyter labextension install @jupyterlab/latex --no-build && \
+#     jupyter labextension install @jupyterlab/toc --no-build && \
+#     jupyter labextension install @jupyterlab/git --no-build && \
+#     jupyter lab build --dev-build=False --minimize=False && \
+#     npm cache clean --force && \
+#     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+#     rm -rf /home/$NB_USER/.cache/yarn && \
+#     rm -rf /home/$NB_USER/.node-gyp && \
+#     fix-permissions $CONDA_DIR && \
+#     fix-permissions /home/$NB_USER
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
