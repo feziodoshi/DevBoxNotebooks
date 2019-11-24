@@ -66,22 +66,6 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
   --upgrade pip numpy scipy pandas
 
 # ==============================================================
-#  Conda Extension Install
-# ==============================================================
-
-# RUN conda install -c conda-forge jupyterlab jupyter_conda
-
-# RUN jupyter labextension install jupyterlab_toastify --no-build && \
-#   jupyter labextension install jupyterlab_conda --no-build && \
-#   jupyter lab build --dev-build=False --minimize=False && \
-#   npm cache clean --force && \
-#   rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-#   rm -rf /home/$NB_USER/.cache/yarn && \
-#   rm -rf /home/$NB_USER/.node-gyp && \
-#   fix-permissions $CONDA_DIR && \
-#   fix-permissions /home/$NB_USER
-
-# ==============================================================
 #  Set workdir and user for Jupyter use
 # ==============================================================
 

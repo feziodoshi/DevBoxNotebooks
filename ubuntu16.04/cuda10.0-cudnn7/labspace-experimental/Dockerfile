@@ -15,7 +15,7 @@ RUN pip install --upgrade pip \
   && conda update conda
 
 #Rollback to a long-term contigent JupyterLab
-RUN conda install --quiet --yes 'jupyterlab==1.0.3'
+RUN conda install --quiet --yes 'jupyterlab==1.0.2'
 
 # ==============================================================
 #  Install Machine Learning Packages
