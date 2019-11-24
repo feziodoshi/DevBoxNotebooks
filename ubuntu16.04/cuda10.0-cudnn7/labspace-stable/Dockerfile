@@ -11,15 +11,12 @@ WORKDIR $HOME
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-RUN pip install jupyterlab-git jupyterlab_latex ipympl && \
-  conda install -c conda-forge jupyterlab jupyter_conda
+RUN pip install jupyterlab-git jupyterlab_latex ipympl
 
 RUN jupyter labextension install jupyterlab-python-file --no-build && \
-  jupyter labextension install jupyterlab_toastify --no-build && \
   jupyter labextension install jupyter-matplotlib --no-build && \
   jupyter labextension install jupyterlab-drawio --no-build && \
   jupyter labextension install jupyterlab_bokeh --no-build && \
-  jupyter labextension install jupyterlab_conda --no-build && \
   jupyter labextension install @jupyterlab/toc --no-build && \
   jupyter labextension install @jupyterlab/git --no-build && \
   jupyter serverextension enable --py jupyterlab_git && \
@@ -70,14 +67,23 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
   --upgrade pip numpy scipy pandas
 
 # ==============================================================
-#  Fixing permissions for R installations
+#  Conda Extension Install
 # ==============================================================
 
-#RUN chmod 600 /opt/conda/lib/R
-#RUN adduser $NB_USER staff
+# RUN conda install -c conda-forge jupyterlab jupyter_conda
+
+# RUN jupyter labextension install jupyterlab_toastify --no-build && \
+#   jupyter labextension install jupyterlab_conda --no-build && \
+#   jupyter lab build --dev-build=False --minimize=False && \
+#   npm cache clean --force && \
+#   rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+#   rm -rf /home/$NB_USER/.cache/yarn && \
+#   rm -rf /home/$NB_USER/.node-gyp && \
+#   fix-permissions $CONDA_DIR && \
+#   fix-permissions /home/$NB_USER
 
 # ==============================================================
-#  set workdir and user for jupyter notebook use
+#  Set workdir and user for Jupyter use
 # ==============================================================
 
 WORKDIR /home/$NB_USER/work/
