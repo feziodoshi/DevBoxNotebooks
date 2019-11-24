@@ -16,14 +16,20 @@ RUN conda config --append channels conda-forge
 RUN conda install --quiet --yes 'jupyterlab==1.0.1'
 #RUN pip install 'jupyterlab==1.0.0'
 
-RUN jupyter labextension install jupyterlab_voyager --no-build && \
-  jupyter lab build --dev-build=False && \
-  npm cache clean --force && \
-  rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-  rm -rf /home/$NB_USER/.cache/yarn && \
-  rm -rf /home/$NB_USER/.node-gyp && \
-  fix-permissions $CONDA_DIR && \
-  fix-permissions /home/$NB_USER
+RUN conda install -c conda-forge jupyterlab jupyter_conda
+
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+    jupyter labextension install jupyterlab_toastify --no-build && \
+    jupyter labextension install jupyterlab_conda --no-build && \
+    jupyter labextension install jupyterlab_voyager --no-build && \
+    jupyter lab build --dev-build=False --minimize=False && \
+    npm cache clean --force && \
+    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+    rm -rf /home/$NB_USER/.cache/yarn && \
+    rm -rf /home/$NB_USER/.node-gyp && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
