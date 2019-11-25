@@ -18,6 +18,7 @@ RUN apt-get update && apt-get -yq dist-upgrade \
     wget \
     bzip2 \
     ca-certificates \
+    tmux \
     sudo \
     locales \
     fonts-liberation \

@@ -2,10 +2,113 @@
 
 # > sudo nvidia-docker build -t cocoflow/labspace:latest https://github.com/ColinConwell/Notebooks.git#master:ubuntu16.04/cuda10.0-cudnn7/labspace-stable
 
-FROM cocoflow/crockpot:latest
+FROM cocoflow/base-notebook:ubuntu16.04-cuda10.0-cudnn7
 
 USER root
 WORKDIR $HOME
+
+# ==============================================================
+#  Updates & Upgrades
+# ==============================================================
+
+RUN pip install --upgrade pip \
+  && conda update conda
+
+# ==============================================================
+#  Install Machine Learning Packages
+# ==============================================================
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN conda install --quiet --yes \
+    'beautifulsoup4' \
+    'conda-forge::blas=*=openblas' \
+    'bokeh' \
+    'cloudpickle' \
+    'cython' \
+    'dask' \
+    'dill' \
+    'h5py' \
+    'hdf5' \
+    'fire' \
+    'ipywidgets' \
+    'matplotlib-base' \
+    'numba' \
+    'numexpr' \
+    'pandas' \
+    'patsy' \
+    'protobuf' \
+    'pymc3' \
+    'scikit-image' \
+    'scikit-learn' \
+    'scipy' \
+    'seaborn' \
+    'sqlalchemy' \
+    'statsmodels' \
+    'sympy' \
+    'vincent' \
+    'xlrd' \
+    && conda clean --all -f -y
+
+RUN pip install opencv-python
+
+# ==============================================================
+#  Install Deep Learning Frameworks
+# ==============================================================
+
+RUN pip install tensorflow-gpu keras torch torchvision \
+  fastai fastprogress pyro-ppl edward
+
+# ==============================================================
+#  Install R Kernel
+# ==============================================================
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    fonts-dejavu \
+    unixodbc \
+    unixodbc-dev \
+    r-cran-rodbc \
+    gfortran \
+    gcc && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN conda install -c r r-essentials
+
+# R packages
+RUN conda install --quiet --yes \
+  'r-base' \
+  'r-irkernel' \
+  'r-plyr' \
+  'r-devtools' \
+  'r-tidyverse' \
+  'r-shiny' \
+  'r-rmarkdown' \
+  'r-forecast' \
+  'r-rsqlite' \
+  'r-reshape2' \
+  'r-caret' \
+  'r-rcurl' \
+  'r-crayon' \
+  'r-randomforest' \
+  'r-htmltools' \
+  'r-sparklyr' \
+  'r-htmlwidgets' \
+  'r-hexbin' \
+  'r-ggfortify' \
+  'r-bootstrap' \
+  'r-data.table' \
+  'r-corrplot' \
+  'r-lme4' \
+  'r-glmnet' \
+  'r-lattice' \
+  'r-pROC' \
+  'r-psych' \
+  && conda clean -tipsy
+
+RUN R -e "install.packages('pacman', quiet = TRUE, repos = 'http://cran.us.r-project.org')"
 
 # ==============================================================
 #  Install Jupyterlab Extensions
@@ -64,16 +167,6 @@ ENV BLENDER_MODULES /usr/local/blender/2.79/python/lib/python3.5/site-packages/
 RUN /usr/local/blender/2.79/python/bin/python3.5m -m ensurepip
 RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/local/blender/2.79/python/lib/python3.5/site-packages/' \
   --upgrade pip numpy scipy pandas
-
-# ==============================================================
-#  Other Installs
-# ==============================================================
-
-RUN apt-get update && apt-get -yq dist-upgrade \
-  && apt-get install -yq --no-install-recommends \
-  tmux \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
 
 # ==============================================================
 #  Set workdir and user for Jupyter use
