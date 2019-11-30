@@ -124,8 +124,7 @@ RUN jupyter labextension install jupyterlab-python-file --no-build && \
   jupyter labextension install @jupyterlab/toc --no-build && \
   jupyter labextension install @jupyterlab/git --no-build && \
   jupyter serverextension enable --py jupyterlab_git && \
-  jupyter lab build --dev-build=False --minimize=False && \
-  npm cache clean --force && \
+  jupyter lab build && npm cache clean --force && \
   rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
   rm -rf /home/$NB_USER/.cache/yarn && \
   rm -rf /home/$NB_USER/.node-gyp && \
