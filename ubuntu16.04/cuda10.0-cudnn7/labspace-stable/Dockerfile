@@ -39,6 +39,7 @@ RUN conda install --quiet --yes \
     'numexpr' \
     'pandas' \
     'patsy' \
+    'pingouin' \
     'protobuf' \
     'pymc3' \
     'scikit-image' \
