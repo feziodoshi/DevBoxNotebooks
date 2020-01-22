@@ -168,6 +168,12 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
   --upgrade pip numpy scipy pandas
 
 # ==============================================================
+#  Additional Installs
+# ==============================================================
+
+RUN conda install -c conda-forge tmux
+
+# ==============================================================
 #  Set workdir and user for Jupyter use
 # ==============================================================
 
