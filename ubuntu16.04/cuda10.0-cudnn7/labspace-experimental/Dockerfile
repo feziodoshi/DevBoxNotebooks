@@ -82,32 +82,7 @@ RUN conda install -c r r-essentials
 # R packages
 RUN conda install --quiet --yes \
   'r-base' \
-  'r-irkernel' \
-  'r-plyr' \
-  'r-devtools' \
   'r-tidyverse' \
-  'r-shiny' \
-  'r-rmarkdown' \
-  'r-forecast' \
-  'r-rsqlite' \
-  'r-reshape2' \
-  'r-caret' \
-  'r-rcurl' \
-  'r-crayon' \
-  'r-randomforest' \
-  'r-htmltools' \
-  'r-sparklyr' \
-  'r-htmlwidgets' \
-  'r-hexbin' \
-  'r-ggfortify' \
-  'r-bootstrap' \
-  'r-data.table' \
-  'r-corrplot' \
-  'r-lme4' \
-  'r-glmnet' \
-  'r-lattice' \
-  'r-pROC' \
-  'r-psych' \
   && conda clean -tipsy
 
 RUN R -e "install.packages('pacman', quiet = TRUE, repos = 'http://cran.us.r-project.org')"
