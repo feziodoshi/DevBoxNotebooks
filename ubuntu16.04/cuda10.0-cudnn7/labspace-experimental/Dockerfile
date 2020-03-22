@@ -129,7 +129,7 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-RUN conda install -c conda-forge jupyterlab jupyter_conda && \
+RUN conda install -c conda-forge jupyter_conda && \
   pip install jupyterlab-git jupyterlab_latex ipympl
 
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
