@@ -67,8 +67,8 @@ RUN pip install tensorflow-gpu keras torch torchvision \
 #  Additional Conda / Conda-Forge Installs
 # ==============================================================
 
-RUN conda install nb_conda nb_conda_kernels && \
-  conda install -c conda-forge tmux
+# RUN conda install nb_conda nb_conda_kernels && \
+#   conda install -c conda-forge tmux
 
 # ==============================================================
 #  Install R Kernel
