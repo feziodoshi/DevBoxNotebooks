@@ -144,7 +144,7 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter labextension install @jupyterlab/latex --no-build && \
     jupyter labextension install @jupyterlab/toc --no-build && \
     jupyter labextension install @jupyterlab/git --no-build && \
-    jupyter lab build  && npm cache clean --force && \
+    jupyter lab build  && #npm cache clean --force && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn && \
     rm -rf /home/$NB_USER/.node-gyp && \
