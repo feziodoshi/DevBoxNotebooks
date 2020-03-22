@@ -122,8 +122,8 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
 #  Additional Conda / Conda-Forge Installs
 # ==============================================================
 
-RUN conda install nb_conda nb_conda_kernels && \
-  conda install -c conda-forge tmux
+# RUN conda install nb_conda nb_conda_kernels && \
+#   conda install -c conda-forge tmux
 
 # ==============================================================
 #  Install Jupyterlab Extensions
