@@ -139,11 +139,11 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     #jupyter labextension install jupyterlab_voyager --no-build && \
     jupyter labextension install jupyter-matplotlib --no-build && \
     jupyter labextension install jupyterlab-drawio --no-build && \
-    jupyter labextension install jupyterlab_bokeh --no-build && \
-    #jupyter labextension install jupyterlab_conda --no-build && \
-    #jupyter labextension install @jupyterlab/latex --no-build && \
-    #jupyter labextension install @jupyterlab/toc --no-build && \
-    #jupyter labextension install @jupyterlab/git --no-build && \
+    #jupyter labextension install jupyterlab_bokeh --no-build && \
+    jupyter labextension install jupyterlab_conda --no-build && \
+    jupyter labextension install @jupyterlab/latex --no-build && \
+    jupyter labextension install @jupyterlab/toc --no-build && \
+    jupyter labextension install @jupyterlab/git --no-build && \
     jupyter lab build  && npm cache clean --force && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn && \
