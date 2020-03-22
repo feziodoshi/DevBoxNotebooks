@@ -132,14 +132,15 @@ RUN conda install nb_conda nb_conda_kernels && \
 RUN conda install -c conda-forge jupyter_conda && \
   pip install jupyterlab-git jupyterlab_latex ipympl
 
-RUN jupyter labextension install --no-build \
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+  jupyter labextension install --no-build \
   @jupyter-widgets/jupyterlab-manager \
   jupyterlab-python-file \
   jupyterlab_toastify \
   #jupyterlab_voyager \
   jupyter-matplotlib \
   jupyterlab-drawio \
-  jupyterlab_bokeh \
+  #jupyterlab_bokeh \
   jupyterlab_conda \
   @jupyterlab/latex \
   @jupyterlab/toc \
