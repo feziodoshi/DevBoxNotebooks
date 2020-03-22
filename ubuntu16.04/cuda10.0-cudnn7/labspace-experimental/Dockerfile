@@ -132,6 +132,17 @@ RUN conda install nb_conda nb_conda_kernels && \
 RUN conda install -c conda-forge jupyter_conda && \
   pip install jupyterlab-git jupyterlab_latex ipympl
 
+# RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+#   jupyter labextension install --no-build @jupyter-widgets/jupyterlab-manager @jupyterlab/toc && \
+#   jupyter lab build && \
+#   jupyter lab clean \
+#   npm cache clean --force && \
+#     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+#     rm -rf /home/$NB_USER/.cache/yarn && \
+#     rm -rf /home/$NB_USER/.node-gyp && \
+#     fix-permissions $CONDA_DIR && \
+#     fix-permissions /home/$NB_USER  
+
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
   jupyter labextension install --no-build \
   @jupyter-widgets/jupyterlab-manager \
@@ -145,8 +156,8 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
   @jupyterlab/latex \
   @jupyterlab/toc \
   @jupyterlab/git && \
-  jupyter lab build \
-  jupyter lab clean \
+  jupyter lab build && \
+  jupyter lab clean && \
   npm cache clean --force && \
     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     rm -rf /home/$NB_USER/.cache/yarn && \
