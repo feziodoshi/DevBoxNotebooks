@@ -151,5 +151,5 @@ RUN /usr/local/blender/2.79/python/bin/python3.5m -m pip install --target='/usr/
 #     fix-permissions $CONDA_DIR && \
 #     fix-permissions /home/$NB_USER
 
-# WORKDIR /home/$NB_USER/work/
-# USER $NB_USER
+WORKDIR /home/$NB_USER/work/
+USER $NB_USER
