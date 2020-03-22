@@ -39,8 +39,6 @@ RUN conda install --quiet --yes \
     'matplotlib-base' \
     'numba' \
     'numexpr' \
-    'nb_conda' \
-    'nb_conda_kernels' \
     'pandas' \
     'patsy' \
     'protobuf' \
@@ -59,11 +57,18 @@ RUN conda install --quiet --yes \
 RUN pip install opencv-python
 
 # ==============================================================
-#  Install Deep Learning Frameworks
+#  Install Deep Learning Packages
 # ==============================================================
 
 RUN pip install tensorflow-gpu keras torch torchvision \
   fastai fastprogress pyro-ppl edward
+
+# ==============================================================
+#  Additional Conda / Conda-Forge Installs
+# ==============================================================
+
+RUN conda install nb_conda nb_conda_kernels && \
+  conda install -c conda-forge tmux
 
 # ==============================================================
 #  Install R Kernel
@@ -83,7 +88,6 @@ RUN conda install -c r r-essentials
 
 # R packages
 RUN conda install --quiet --yes \
-  'r-base' \
   'r-tidyverse' \
   && conda clean -tipsy
 
