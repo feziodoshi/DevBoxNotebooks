@@ -134,7 +134,7 @@ RUN conda install -c conda-forge jupyter_conda && \
 
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-    #jupyter labextension install jupyterlab-python-file --no-build && \
+    jupyter labextension install jupyterlab-python-file --no-build && \
     #jupyter labextension install jupyterlab_toastify --no-build && \
     #jupyter labextension install jupyterlab_voyager --no-build && \
     #jupyter labextension install jupyter-matplotlib --no-build && \
