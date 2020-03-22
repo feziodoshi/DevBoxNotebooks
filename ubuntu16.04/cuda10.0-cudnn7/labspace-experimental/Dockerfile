@@ -12,7 +12,7 @@ WORKDIR $HOME
 # ==============================================================
 
 RUN pip install --upgrade pip \
-  && conda update conda
+  && conda update -n base conda
 
 #Rollback to a long-term contigent JupyterLab
 #RUN conda install --quiet --yes 'jupyterlab==1.0.0'
@@ -129,27 +129,27 @@ RUN conda install nb_conda nb_conda_kernels && \
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-# RUN conda install -c conda-forge jupyterlab jupyter_conda && \
-#   pip install jupyterlab-git jupyterlab_latex ipympl
+RUN conda install -c conda-forge jupyterlab jupyter_conda && \
+  pip install jupyterlab-git jupyterlab_latex ipympl
 
-# RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-#     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-#     jupyter labextension install jupyterlab_toastify --no-build && \
-#     #jupyter labextension install jupyterlab_conda --no-build && \
-#     jupyter labextension install jupyterlab-python-file --no-build && \
-#     #jupyter labextension install jupyterlab_voyager --no-build && \
-#     jupyter labextension install jupyter-matplotlib --no-build && \
-#     #jupyter labextension install jupyterlab-drawio --no-build && \
-#     jupyter labextension install jupyterlab_bokeh --no-build && \
-#     jupyter labextension install @jupyterlab/latex --no-build && \
-#     jupyter labextension install @jupyterlab/toc --no-build && \
-#     jupyter labextension install @jupyterlab/git --no-build && \
-#     jupyter lab build  && npm cache clean --force && \
-#     rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-#     rm -rf /home/$NB_USER/.cache/yarn && \
-#     rm -rf /home/$NB_USER/.node-gyp && \
-#     fix-permissions $CONDA_DIR && \
-#     fix-permissions /home/$NB_USER
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+    jupyter labextension install jupyterlab-python-file --no-build && \
+    jupyter labextension install jupyterlab_toastify --no-build && \
+    #jupyter labextension install jupyterlab_voyager --no-build && \
+    jupyter labextension install jupyter-matplotlib --no-build && \
+    jupyter labextension install jupyterlab-drawio --no-build && \
+    jupyter labextension install jupyterlab_bokeh --no-build && \
+    jupyter labextension install jupyterlab_conda --no-build && \
+    jupyter labextension install @jupyterlab/latex --no-build && \
+    jupyter labextension install @jupyterlab/toc --no-build && \
+    jupyter labextension install @jupyterlab/git --no-build && \
+    jupyter lab build  && npm cache clean --force && \
+    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+    rm -rf /home/$NB_USER/.cache/yarn && \
+    rm -rf /home/$NB_USER/.node-gyp && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
