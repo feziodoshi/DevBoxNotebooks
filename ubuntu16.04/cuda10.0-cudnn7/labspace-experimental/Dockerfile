@@ -134,13 +134,13 @@ RUN conda install -c conda-forge jupyter_conda && \
 
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-    jupyter labextension install jupyterlab-python-file --no-build && \
-    jupyter labextension install jupyterlab_toastify --no-build && \
+    #jupyter labextension install jupyterlab-python-file --no-build && \
+    #jupyter labextension install jupyterlab_toastify --no-build && \
     #jupyter labextension install jupyterlab_voyager --no-build && \
-    jupyter labextension install jupyter-matplotlib --no-build && \
-    jupyter labextension install jupyterlab-drawio --no-build && \
-    jupyter labextension install jupyterlab_bokeh --no-build && \
-    jupyter labextension install jupyterlab_conda --no-build && \
+    #jupyter labextension install jupyter-matplotlib --no-build && \
+    #jupyter labextension install jupyterlab-drawio --no-build && \
+    #jupyter labextension install jupyterlab_bokeh --no-build && \
+    #jupyter labextension install jupyterlab_conda --no-build && \
     #jupyter labextension install @jupyterlab/latex --no-build && \
     #jupyter labextension install @jupyterlab/toc --no-build && \
     #jupyter labextension install @jupyterlab/git --no-build && \
