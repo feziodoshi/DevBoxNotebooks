@@ -130,7 +130,7 @@ RUN conda install nb_conda nb_conda_kernels && \
 # ==============================================================
 
 RUN conda install -c conda-forge jupyter_conda && \
-  pip install jupyterlab-git jupyterlab_latex ipympl
+  pip install jupyterlab-git jupyterlab_latex ipympl nbdime==1.1.0
 
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
   jupyter labextension install --no-build \
@@ -140,7 +140,7 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
   jupyterlab_conda \
   jupyterlab-drawio \
   @jupyterlab/toc \
-  @jupyterlab/git@0.9 \
+  @jupyterlab/git \
   @jupyterlab/latex && \
   jupyter lab build && \
   jupyter lab clean && \
