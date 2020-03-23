@@ -134,9 +134,9 @@ RUN conda install -c conda-forge jupyter_conda && \
 
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
   jupyter labextension install --no-build \
-  @jupyter-widgets/jupyterlab-manager \
+  @jupyter-widgets/jupyterlab-manager@1.0 \
   jupyterlab-python-file \
-  jupyterlab-toastify \
+  jupyterlab_toastify \
   jupyterlab_conda \
   jupyterlab-drawio \
   @jupyterlab/toc \
