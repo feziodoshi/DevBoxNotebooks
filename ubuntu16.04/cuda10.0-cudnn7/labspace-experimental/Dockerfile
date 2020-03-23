@@ -129,7 +129,7 @@ RUN conda install nb_conda nb_conda_kernels && \
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-RUN conda install -c conda-forge jupyter_conda && \
+RUN conda install -c conda-forge nbdime==1.1.0 jupyter_conda && \
   pip install jupyterlab-git jupyterlab_latex ipympl
 
 # RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
@@ -147,11 +147,7 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
   jupyter labextension install --no-build \
   @jupyter-widgets/jupyterlab-manager \
   jupyterlab-python-file \
-  jupyterlab_toastify \
-  #jupyterlab_voyager \
-  jupyter-matplotlib \
   jupyterlab-drawio \
-  #jupyterlab_bokeh \
   jupyterlab_conda \
   @jupyterlab/latex \
   @jupyterlab/toc \
@@ -159,11 +155,11 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
   jupyter lab build && \
   jupyter lab clean && \
   npm cache clean --force && \
-    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-    rm -rf /home/$NB_USER/.cache/yarn && \
-    rm -rf /home/$NB_USER/.node-gyp && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+  rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+  rm -rf /home/$NB_USER/.cache/yarn && \
+  rm -rf /home/$NB_USER/.node-gyp && \
+  fix-permissions $CONDA_DIR && \
+  fix-permissions /home/$NB_USER
 
 # RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 #     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
