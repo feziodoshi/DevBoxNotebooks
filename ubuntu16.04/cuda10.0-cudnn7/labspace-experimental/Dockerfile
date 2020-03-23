@@ -129,7 +129,7 @@ RUN conda install nb_conda nb_conda_kernels && \
 #  Install Jupyterlab Extensions
 # ==============================================================
 
-RUN conda install -c conda-forge nbdime==1.1.0 jupyter_conda && \
+RUN conda install -c conda-forge jupyter_conda && \
   pip install jupyterlab-git jupyterlab_latex ipympl
 
 # RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
