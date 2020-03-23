@@ -134,7 +134,7 @@ RUN conda install -c conda-forge jupyter_conda && \
 
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
   jupyter labextension install --no-build \
-  @jupyter-widgets/jupyterlab-manager@1.0 \
+  @jupyter-widgets/jupyterlab-manager \
   jupyterlab-python-file \
   jupyterlab-toastify \
   jupyterlab_conda \
