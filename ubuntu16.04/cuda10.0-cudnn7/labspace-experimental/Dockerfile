@@ -158,16 +158,6 @@ USER $NB_USER
 #  Install Additional Packages
 # ==============================================================
 
-RUN conda install -c r r-essentials
-
-# R packages
 RUN conda install --quiet --yes \
-  'r-tidyverse' \
-  && conda clean -tipsy
-
-RUN R -e "install.packages('pacman', quiet = TRUE, repos = 'http://cran.us.r-project.org')"
-
-RUN conda install --quiet --yes \
-    'r-tidyverse' \
     'pingouin' \
     && conda clean --all -f -y
