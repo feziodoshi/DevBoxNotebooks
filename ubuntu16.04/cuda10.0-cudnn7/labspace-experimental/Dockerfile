@@ -159,11 +159,11 @@ RUN conda install --quiet --yes \
     'pingouin' \
     && conda clean --all -f -y
 
-RUN R -e "install.packages('tidyverse', repos = 'http://cran.us.r-project.org')"
-
 # ==============================================================
-#  Return to Notebook USer
+#  Return to Notebook User
 # ==============================================================
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
+
+RUN R -e "install.packages('tidyverse', repos = 'http://cran.us.r-project.org')"
