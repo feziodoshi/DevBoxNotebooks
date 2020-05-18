@@ -161,3 +161,12 @@ USER $NB_USER
 RUN conda install --quiet --yes \
     'pingouin' \
     && conda clean --all -f -y
+
+USER $NB_UID
+
+# R packages
+RUN conda install --quiet --yes \
+    'r-tidyverse=1.3*' \
+    && \
+    conda clean --all -f -y && \
+    fix-permissions $CONDA_DIR
