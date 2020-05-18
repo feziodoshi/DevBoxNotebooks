@@ -156,8 +156,11 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 # ==============================================================
 
 RUN conda install --quiet --yes \
+    'r-stringi' \
     'pingouin' \
     && conda clean --all -f -y
+
+RUN R -e "install.packages('tidyverse', repos = 'http://cran.us.r-project.org')"
 
 # ==============================================================
 #  Return to Notebook User
@@ -165,5 +168,3 @@ RUN conda install --quiet --yes \
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
-
-RUN R -e "install.packages('tidyverse', repos = 'http://cran.us.r-project.org')"
