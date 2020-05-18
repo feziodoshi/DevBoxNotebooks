@@ -153,3 +153,12 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 
 WORKDIR /home/$NB_USER/work/
 USER $NB_USER
+
+# ==============================================================
+#  Install Additional Packages
+# ==============================================================
+
+RUN conda install --quiet --yes \
+    'r-tidyverse' \
+    'pingouin' \
+    && conda clean --all -f -y
