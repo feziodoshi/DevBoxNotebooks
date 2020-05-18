@@ -18,7 +18,7 @@ RUN pip install --upgrade pip \
 #RUN conda install --quiet --yes 'jupyterlab==1.0.0'
 
 # ==============================================================
-#  Install Machine Learning Packages
+#  Install Python Packages
 # ==============================================================
 
 RUN apt-get update && \
@@ -151,9 +151,6 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
   fix-permissions $CONDA_DIR && \
   fix-permissions /home/$NB_USER
 
-WORKDIR /home/$NB_USER/work/
-USER $NB_USER
-
 # ==============================================================
 #  Install Additional Packages
 # ==============================================================
@@ -162,49 +159,7 @@ RUN conda install --quiet --yes \
     'pingouin' \
     && conda clean --all -f -y
 
-USER root
+RUN R -e "install.packages('tidyverse', quiet = TRUE, repos = 'http://cran.us.r-project.org')"
 
-# R pre-requisites
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    fonts-dejavu \
-    unixodbc \
-    unixodbc-dev \
-    r-cran-rodbc \
-    gfortran \
-    gcc && \
-    rm -rf /var/lib/apt/lists/*
-
-# Fix for devtools https://github.com/conda-forge/r-devtools-feedstock/issues/4
-RUN ln -s /bin/tar /bin/gtar
-
-USER $NB_UID
-
-# R packages
-RUN conda install --quiet --yes \
-    'r-base=3.6.3' \
-    'r-caret=6.0*' \
-    'r-crayon=1.3*' \
-    'r-devtools=2.3*' \
-    'r-forecast=8.12*' \
-    'r-hexbin=1.28*' \
-    'r-htmltools=0.4*' \
-    'r-htmlwidgets=1.5*' \
-    'r-irkernel=1.1*' \
-    'r-nycflights13=1.0*' \
-    'r-plyr=1.8*' \
-    'r-randomforest=4.6*' \
-    'r-rcurl=1.98*' \
-    'r-reshape2=1.4*' \
-    'r-rmarkdown=2.1*' \
-    'r-rodbc=1.3*' \
-    'r-rsqlite=2.2*' \
-    'r-shiny=1.4*' \
-    'r-tidyverse=1.3*' \
-    'unixodbc=2.3.*' \
-    && \
-    conda clean --all -f -y && \
-    fix-permissions $CONDA_DIR
-
-# Install e1071 R package (dependency of the caret R package)
-RUN conda install --quiet --yes r-e1071
+WORKDIR /home/$NB_USER/work/
+USER $NB_USER
